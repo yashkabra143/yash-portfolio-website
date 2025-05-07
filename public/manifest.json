@@ -1,0 +1,22 @@
+{
+  "name": "Yash Kabra Portfolio",
+  "short_name": "YK Portfolio",
+  "description": "Senior QA Engineer professional portfolio showcasing experience, skills, and projects",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#0984E3",
+  "icons": [
+    {
+      "src": "favicon.svg",
+      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "yash-profile.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    }
+  ]
+}
