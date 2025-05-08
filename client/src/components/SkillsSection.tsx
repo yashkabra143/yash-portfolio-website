@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Code, Bot, ExternalLink, Cog, Cloud, Database } from "lucide-react";
 import { skillsData } from "@/lib/data";
+import SkillsAnimation from "./SkillsAnimation";
+import { Suspense } from "react";
 
 type SkillItem = {
   name: string;
@@ -29,6 +31,18 @@ export default function SkillsSection() {
         >
           Technical Skills
         </motion.h2>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <Suspense fallback={<div className="h-72 flex items-center justify-center">Loading skills animation...</div>}>
+            <SkillsAnimation />
+          </Suspense>
+        </motion.div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {skillsData.map((skill, index) => (

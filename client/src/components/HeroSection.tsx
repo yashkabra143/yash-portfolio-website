@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { Mail, Phone, Briefcase, Github, Linkedin } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import HeroAnimation from "./HeroAnimation";
+import { Suspense } from "react";
 
 const profileData = {
   name: "Yash Kabra",
@@ -21,17 +23,26 @@ export default function HeroSection() {
           transition={{ duration: 0.5 }}
           className="flex flex-col md:flex-row items-center"
         >
-          <div className="md:w-1/3 mb-8 md:mb-0 flex justify-center">
+          <div className="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, duration: 0.5 }}
-              className="rounded-full w-56 h-56 overflow-hidden border-4 border-background shadow-lg dark:shadow-slate-700/30"
+              className="rounded-full w-56 h-56 overflow-hidden border-4 border-background shadow-lg dark:shadow-slate-700/30 mb-6"
             >
               <Avatar className="w-full h-full">
                 <AvatarImage src="/attached_assets/Yash DP.jpg" alt="Yash Kabra" className="w-full h-full object-cover" />
                 <AvatarFallback>YK</AvatarFallback>
               </Avatar>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="w-full mt-6"
+            >
+              <HeroAnimation />
             </motion.div>
           </div>
           <div className="md:w-2/3 md:pl-12">

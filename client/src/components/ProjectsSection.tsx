@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
 import { Ticket, Baby, Bath, Coins, Cloud, Filter } from "lucide-react";
 import { projectsData, projectFilters } from "@/lib/data";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
+import ProjectsAnimation from "./ProjectsAnimation";
 
 export default function ProjectsSection() {
   const projectIcons = {
@@ -61,6 +62,18 @@ export default function ProjectsSection() {
         >
           Projects
         </motion.h2>
+        
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mb-12 max-w-4xl mx-auto"
+        >
+          <Suspense fallback={<div className="h-72 flex items-center justify-center">Loading projects animation...</div>}>
+            <ProjectsAnimation />
+          </Suspense>
+        </motion.div>
         
         <motion.div
           initial={{ opacity: 0, y: 20 }}
