@@ -11,6 +11,11 @@
         "config": {
           "distDir": "dist/public"
         }
+      
+      },
+      {
+        "src": "attached_assets/**",
+        "use": "@vercel/static"
       }
     ],
     "routes": [
