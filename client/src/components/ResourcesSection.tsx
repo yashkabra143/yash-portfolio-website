@@ -18,7 +18,7 @@ const resourcesData: ResourceItem[] = [
     title: "QA Bug Report Template",
     description: "A comprehensive bug report template for effective issue tracking and resolution.",
     fileName: "QA_Bug_Report_Template.xlsx",
-    fileUrl: "/downloads/QA_Bug_Report_Templates.xlsx",
+    fileUrl: "/downloads/bug_report.xlsx",
     fileType: "spreadsheet",
     downloadable: true
   },
@@ -27,7 +27,7 @@ const resourcesData: ResourceItem[] = [
     title: "Test Case Documentation Template",
     description: "Structured template for creating detailed test cases with expected results and steps.",
     fileName: "Test_Case_Template.xlsx",
-    fileUrl: "/downloads/Test_Case_Template.xlsx",
+    fileUrl: "/downloads/test_cases_report.xlsx",
     fileType: "spreadsheet",
     downloadable: true
   },
