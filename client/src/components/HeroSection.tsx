@@ -31,7 +31,7 @@ export default function HeroSection() {
               className="rounded-full w-56 h-56 overflow-hidden border-4 border-background shadow-lg dark:shadow-slate-700/30 mb-6"
             >
               <Avatar className="w-full h-full">
-                <AvatarImage src="/attached_assets/Yash DP.jpg" alt="Yash Kabra" className="w-full h-full object-cover" />
+                <AvatarImage src="/attached_assets/Yash-dp.jpg" alt="Yash Kabra" className="w-full h-full object-cover" />
                 <AvatarFallback>YK</AvatarFallback>
               </Avatar>
             </motion.div>
