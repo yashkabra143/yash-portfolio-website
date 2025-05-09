@@ -18,7 +18,7 @@ const resourcesData: ResourceItem[] = [
     title: "QA Bug Report Template",
     description: "A comprehensive bug report template for effective issue tracking and resolution.",
     fileName: "QA_Bug_Report_Template.xlsx",
-    fileUrl: "/downloads/QA_Bug_Report_Template.xlsx",
+    fileUrl: "/downloads/QA_Bug_Report_Templates.xlsx",
     fileType: "spreadsheet",
     downloadable: true
   },
