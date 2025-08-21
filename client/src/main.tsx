@@ -6,11 +6,12 @@ import { queryClient } from "@/lib/queryClient";
 import { ActiveSectionProvider } from "@/lib/hooks";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
+
 
 createRoot(document.getElementById("root")!).render(
-  import { Analytics } from "@vercel/analytics/react";
 
-  createRoot(document.getElementById("root")!).render(
+ 
     <ThemeProvider defaultTheme="light">
       <QueryClientProvider client={queryClient}>
         <ActiveSectionProvider>
