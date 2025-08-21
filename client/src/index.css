@@ -8,75 +8,56 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 222.2 84% 4.9%;
-
     --card: 0 0% 100%;
     --card-foreground: 222.2 84% 4.9%;
-
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 208 93% 47%;
+    --primary: 221.2 83.2% 53.3%;
     --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
+    --muted: 210 40% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 208 95% 72%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
+    --accent: 210 40% 96%;
+    --accent-foreground: 222.2 84% 4.9%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 208 93% 47%;
-
+    --ring: 221.2 83.2% 53.3%;
     --radius: 0.5rem;
-
-    /* Custom colors */
-    --charcoal: 210 6% 20%;
-    --professional-blue: 208 93% 47%;
-    --light-blue: 208 95% 72%;
-    --light-gray: 0 0% 97%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
   }
 
   .dark {
-    --background: 222 47% 11%;
+    --background: 222.2 84% 4.9%;
     --foreground: 210 40% 98%;
-
-    --card: 222 47% 14%;
+    --card: 222.2 84% 4.9%;
     --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
+    --popover: 222.2 84% 4.9%;
     --popover-foreground: 210 40% 98%;
-
-    --primary: 208 93% 47%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
+    --primary: 217.2 91.2% 59.8%;
+    --primary-foreground: 222.2 84% 4.9%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
-
     --muted: 217.2 32.6% 17.5%;
     --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 208 95% 72%;
+    --accent: 217.2 32.6% 17.5%;
     --accent-foreground: 210 40% 98%;
-
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 210 40% 98%;
-
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
-    --ring: 208 93% 47%;
-
-    /* Custom colors for dark mode */
-    --charcoal: 210 6% 90%;
-    --professional-blue: 208 93% 60%;
-    --light-blue: 208 95% 50%;
-    --light-gray: 0 0% 20%;
+    --ring: 224.3 76.3% 94.1%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
   }
 
   * {
@@ -136,4 +117,81 @@
   .animation-delay-500 {
     animation-delay: 0.5s;
   }
+}
+
+/* Custom n8n Chat Widget Styling */
+:root {
+  --chat--color-primary: hsl(var(--primary));
+  --chat--color-primary-shade-50: hsl(var(--primary) / 0.9);
+  --chat--color-primary-shade-100: hsl(var(--primary) / 0.8);
+  --chat--color-secondary: hsl(var(--secondary));
+  --chat--color-secondary-shade-50: hsl(var(--secondary) / 0.9);
+  --chat--color-white: hsl(var(--background));
+  --chat--color-light: hsl(var(--muted));
+  --chat--color-light-shade-50: hsl(var(--muted) / 0.8);
+  --chat--color-light-shade-100: hsl(var(--muted) / 0.6);
+  --chat--color-medium: hsl(var(--border));
+  --chat--color-dark: hsl(var(--foreground));
+  --chat--color-disabled: hsl(var(--muted-foreground));
+  --chat--color-typing: hsl(var(--muted-foreground));
+
+  --chat--spacing: 1rem;
+  --chat--border-radius: 0.5rem;
+  --chat--transition-duration: 0.15s;
+
+  --chat--window--width: 400px;
+  --chat--window--height: 600px;
+
+  --chat--header-height: auto;
+  --chat--header--padding: var(--chat--spacing);
+  --chat--header--background: hsl(var(--primary));
+  --chat--header--color: hsl(var(--primary-foreground));
+  --chat--header--border-top: none;
+  --chat--header--border-bottom: none;
+  --chat--heading--font-size: 1.25rem;
+  --chat--subtitle--font-size: 0.875rem;
+  --chat--subtitle--line-height: 1.4;
+
+  --chat--textarea--height: 50px;
+
+  --chat--message--font-size: 0.875rem;
+  --chat--message--padding: var(--chat--spacing);
+  --chat--message--border-radius: var(--chat--border-radius);
+  --chat--message-line-height: 1.5;
+  --chat--message--bot--background: hsl(var(--card));
+  --chat--message--bot--color: hsl(var(--card-foreground));
+  --chat--message--bot--border: 1px solid hsl(var(--border));
+  --chat--message--user--background: hsl(var(--primary));
+  --chat--message--user--color: hsl(var(--primary-foreground));
+  --chat--message--user--border: none;
+  --chat--message--pre--background: hsl(var(--muted));
+
+  --chat--toggle--background: hsl(var(--primary));
+  --chat--toggle--hover--background: hsl(var(--primary) / 0.9);
+  --chat--toggle--active--background: hsl(var(--primary) / 0.8);
+  --chat--toggle--color: hsl(var(--primary-foreground));
+  --chat--toggle--size: 64px;
+}
+
+/* Dark mode adjustments for n8n chat */
+.dark {
+  --chat--color-primary: hsl(var(--primary));
+  --chat--color-primary-shade-50: hsl(var(--primary) / 0.9);
+  --chat--color-primary-shade-100: hsl(var(--primary) / 0.8);
+  --chat--color-secondary: hsl(var(--secondary));
+  --chat--color-white: hsl(var(--background));
+  --chat--color-light: hsl(var(--muted));
+  --chat--color-light-shade-50: hsl(var(--muted) / 0.8);
+  --chat--color-light-shade-100: hsl(var(--muted) / 0.6);
+  --chat--color-medium: hsl(var(--border));
+  --chat--color-dark: hsl(var(--foreground));
+  --chat--color-disabled: hsl(var(--muted-foreground));
+  --chat--color-typing: hsl(var(--muted-foreground));
+  
+  --chat--message--bot--background: hsl(var(--card));
+  --chat--message--bot--color: hsl(var(--card-foreground));
+  --chat--message--bot--border: 1px solid hsl(var(--border));
+  --chat--message--user--background: hsl(var(--primary));
+  --chat--message--user--color: hsl(var(--primary-foreground));
+  --chat--message--pre--background: hsl(var(--muted));
 }
