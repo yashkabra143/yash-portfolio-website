@@ -41,6 +41,7 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+
     <!-- Register service worker for PWA support -->
     <script>
       if ('serviceWorker' in navigator) {
@@ -55,8 +56,37 @@
         });
       }
     </script>
-    <!-- This script injects a replit badge into the page, please feel free to remove this line -->
+
+    <!-- This script injects a replit badge into the page, feel free to remove -->
     <script type="text/javascript" src="https://replit.com/public/js/replit-badge-v3.js"></script>
+
+    <!-- Target container for the n8n chat widget -->
     <div id="n8n-chat"></div>
+
+    <!-- ✅ ADD THESE TWO: n8n Chat CSS + initializer via CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+    <script type="module">
+      import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+      createChat({
+        webhookUrl: 'https://triggerandflow.in/webhook/16b35e59-8e87-4bdd-aa59-e6609e16599f/chat',
+        target: '#n8n-chat',
+        mode: 'window',                 // 'window' bubble; use 'fullscreen' if you want a full page target
+        loadPreviousSession: true,
+        showWelcomeScreen: false,
+        initialMessages: [
+          'Hi there! 👋',
+          'I’m Yash’s assistant. How can I help?'
+        ],
+        i18n: {
+          en: {
+            title: 'Chat with Yash’s assistant',
+            subtitle: 'Ask about QA, automation, or projects.',
+            inputPlaceholder: 'Type your question…'
+          }
+        }
+        // enableStreaming: true, // turn on only if Chat Trigger node has Streaming response enabled
+      });
+    </script>
   </body>
 </html>

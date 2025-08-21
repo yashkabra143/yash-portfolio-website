@@ -8,7 +8,6 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 import React from "react";
-import N8nChat from "@/components/N8nChat";
 
 
 createRoot(document.getElementById("root")!).render(
@@ -19,7 +18,6 @@ createRoot(document.getElementById("root")!).render(
           <App />
           <SpeedInsights />
           <Analytics />
-          <N8nChat />
         </ActiveSectionProvider>
       </QueryClientProvider>
     </ThemeProvider>
