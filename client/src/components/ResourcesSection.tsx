@@ -13,12 +13,12 @@ interface ResourceItem {
 }
 
 const resourcesData: ResourceItem[] = [
-  {
+   {
     id: 1,
     title: "QA Bug Report Template",
     description: "A comprehensive bug report template for effective issue tracking and resolution.",
     fileName: "QA_Bug_Report_Template.xlsx",
-    fileUrl: "/downloads/bug_report.xlsx",
+    fileUrl: "/attached_assets/Shopman_BugReport.xlsx",
     fileType: "spreadsheet",
     downloadable: true
   },
@@ -27,7 +27,7 @@ const resourcesData: ResourceItem[] = [
     title: "Test Case Documentation Template",
     description: "Structured template for creating detailed test cases with expected results and steps.",
     fileName: "Test_Case_Template.xlsx",
-    fileUrl: "/downloads/test_cases_report.xlsx",
+    fileUrl: "/attached_assets/Zega_app_test_cases.pdf",
     fileType: "spreadsheet",
     downloadable: true
   },
@@ -36,7 +36,7 @@ const resourcesData: ResourceItem[] = [
     title: "Mobile App Testing Checklist",
     description: "Comprehensive checklist for testing mobile applications across different platforms and devices.",
     fileName: "Mobile_Testing_Checklist.pdf",
-    fileUrl: "/downloads/Mobile_Testing_Checklist.pdf",
+    fileUrl: "/attached_assets/Mobile_Checklists.xlsx",
     fileType: "pdf",
     downloadable: true
   }
