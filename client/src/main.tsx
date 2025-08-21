@@ -8,16 +8,21 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { SpeedInsights } from "@vercel/speed-insights/react";
 
 createRoot(document.getElementById("root")!).render(
-  <ThemeProvider defaultTheme="light">
-    <QueryClientProvider client={queryClient}>
-      <ActiveSectionProvider>
-        <App />
-        {/* ⬇️ Add this just once, after your main app content */}
-        <SpeedInsights />
-      </ActiveSectionProvider>
-    </QueryClientProvider>
-  </ThemeProvider>
-);
+  import { Analytics } from "@vercel/analytics/react";
+
+  createRoot(document.getElementById("root")!).render(
+    <ThemeProvider defaultTheme="light">
+      <QueryClientProvider client={queryClient}>
+        <ActiveSectionProvider>
+          <App />
+          {/* keep SpeedInsights */}
+          <SpeedInsights />
+          {/* add Analytics here */}
+          <Analytics />
+        </ActiveSectionProvider>
+      </QueryClientProvider>
+    </ThemeProvider>
+  );
 // createRoot(document.getElementById("root")!).render(
 //   <ThemeProvider defaultTheme="light">
 //     <QueryClientProvider client={queryClient}>
