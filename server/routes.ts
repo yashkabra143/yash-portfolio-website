@@ -34,6 +34,39 @@ export async function registerRoutes(app: Express): Promise<Server> {
         .catch(err => {
           console.error('Failed to send email notification:', err);
         });
+
+      // Fire-and-forget call to n8n webhook (POST JSON)
+      // Uses env var N8N_WEBHOOK_URL if available; otherwise, falls back to provided URL
+      try {
+        const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL || 'https://triggerandflow.in/webhook-test/contact-form';
+        if (n8nWebhookUrl) {
+          const createdAtIso = new Date().toISOString();
+          const payload = {
+            name: validatedData.name,
+            email: validatedData.email,
+            subject: validatedData.subject,
+            message: validatedData.message,
+            createdAt: createdAtIso,
+          };
+          // Do not await; log result or errors
+          (async () => {
+            try {
+              const resp = await fetch(n8nWebhookUrl, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(payload),
+              });
+              if (!resp.ok) {
+                console.error('n8n webhook responded with non-OK status:', resp.status);
+              }
+            } catch (err) {
+              console.error('Failed to call n8n webhook:', err);
+            }
+          })();
+        }
+      } catch (err) {
+        console.error('Error preparing n8n webhook call:', err);
+      }
       
       return res.status(201).json({
         success: true,
