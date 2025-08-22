@@ -10,7 +10,7 @@ const profileData = {
   location: "Indore, MP, India",
   email: "yashkabra143@gmail.com",
   phone: "+91 8370043219",
-  about: "Experienced QA professional with 7+ years in Manual and Automation Testing. Proficient in test execution, plan creation, and defect reporting. Seeking a QA role to enhance software quality."
+  about: "Experienced QA professional with 8+ years in Manual and Automation Testing. Proficient in test execution, plan creation, and defect reporting. Seeking a QA role to enhance software quality."
 };
 
 export default function HeroSection() {

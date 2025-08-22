@@ -1,0 +1,128 @@
+{
+    "name": "Yash Kabra",
+    "title": "Senior Quality Assurance Engineer",
+    "location": "Indore, MP, India",
+    "experience_years": 8,
+    "summary": "Experienced QA professional with 8+ years in manual and automation testing across web, mobile, and APIs. Strong in test strategy, framework development, CI/CD integration, and driving measurable quality improvements.",
+    "public_contacts": {
+      "email": "yashkabra143@gmail.com",
+      "phone": "+91 8370043219",
+      "preferred": "LinkedIn"
+    },
+    "skills": {
+      "programming_languages": ["Python", "Java", "JavaScript"],
+      "automation_frameworks": ["Selenium", "PyTest", "Behave", "Cucumber", "TestNG"],
+      "api_testing": ["Postman", "REST Assured", "Python Requests"],
+      "ci_cd_devops": ["Jenkins", "GitHub Actions"],
+      "cloud_virtualization": ["BrowserStack", "LambdaTest", "Sauce Labs"],
+      "databases": ["MySQL", "PostgreSQL"],
+      "other": ["BDD", "Page Object Model", "Performance testing (Locust)"]
+    },
+    "experience": [
+      {
+        "company": "PERIZER (Freelancer)",
+        "location": "Dallas, TX",
+        "role": "Senior Quality Assurance Engineer",
+        "period": "Jan 2024 – Present",
+        "highlights": [
+          "Built and maintained Python + Selenium + PyTest automation framework",
+          "API testing with Python Requests; BDD with Behave",
+          "CI/CD with Jenkins & GitHub Actions; ~30% faster releases",
+          "Raised reliability ~20% across Computesphere, Calen360, CipherAuth, Xerinn"
+        ]
+      },
+      {
+        "company": "YADARA LLC (Freelancer)",
+        "location": "Austin, TX",
+        "role": "Senior Quality Assurance Engineer",
+        "period": "Apr 2023 – Dec 2023",
+        "highlights": [
+          "Automation + manual testing; ~20% reliability lift",
+          "Cut testing time ~30%; improved workflow efficiency ~15%",
+          "E2E automation in Python/Selenium; API automation with Requests",
+          "Performance testing with Locust"
+        ]
+      },
+      {
+        "company": "Brainbees Solution Technologies Pvt Ltd (FirstCry.com)",
+        "location": "Pune, MH, India",
+        "role": "Quality Assurance Engineer II",
+        "period": "Jun 2021 – Apr 2023",
+        "highlights": [
+          "Functional, manual, usability testing; ~15% user satisfaction boost",
+          "Automation reduced testing effort ~40%",
+          "Python-based mobile app automation; POM in Selenium"
+        ]
+      },
+      {
+        "company": "Quest Global Technologies Pvt Ltd",
+        "location": "Indore, MP, India",
+        "role": "Senior Quality Assurance Engineer",
+        "period": "Feb 2020 – Jun 2021",
+        "highlights": [
+          "~10% reliability improvement via thorough testing",
+          "Automation reduced testing time ~25%"
+        ]
+      },
+      {
+        "company": "Genesis Technologies Pvt Ltd",
+        "location": "Indore, MP, India",
+        "role": "Senior Quality Assurance Engineer",
+        "period": "Jun 2017 – Feb 2020",
+        "highlights": [
+          "Implemented BDD with Cucumber/SpecFlow",
+          "Wrote feature files & step definitions; automated test execution"
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "Bachelor's in Information Technology",
+        "institution": "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
+        "period": "2013 – 2017"
+      }
+    ],
+    "projects": [
+      {
+        "name": "Yadara.com",
+        "domain": "Ticketing System",
+        "role": "Senior QA Engineer",
+        "frameworks_tools": ["Selenium", "TestNG"],
+        "summary": "Ticket buying/selling platform; created automation for reliability and speed."
+      },
+      {
+        "name": "FirstCry.com",
+        "domain": "E-commerce & parenting",
+        "role": "QA (Functional, Manual, Usability, Exploratory, Automation)",
+        "frameworks_tools": ["Redmine", "SmartWork", "Teams", "FortiClient", "POM"],
+        "summary": "Ensured seamless e-commerce operations and quality releases."
+      },
+      {
+        "name": "DrDenese",
+        "domain": "E-commerce (skincare)",
+        "role": "QA (Functional, Performance, Usability, Automation)",
+        "frameworks_tools": ["C#", "BDD", "Cucumber", "SpecFlow", "TestNG"],
+        "summary": "Web store + subscription system; robust test coverage."
+      },
+      {
+        "name": "Smart Asset Manager",
+        "domain": "Cryptocurrency exchange",
+        "role": "QA (Functional, Performance, Usability, Exploratory, Automation)",
+        "frameworks_tools": ["Mantis", "Blockchain", "GSheet"],
+        "summary": "Secure buy/sell digital assets; comprehensive testing."
+      },
+      {
+        "name": "Computesphere",
+        "domain": "Cloud Management",
+        "role": "QA (Manual, Automation, API, CI/CD)",
+        "frameworks_tools": ["Python", "Selenium", "PyTest", "Behave", "Requests", "Jenkins", "GitHub Actions"],
+        "summary": "Automation framework; API tests; CI/CD integration; ~30% faster releases."
+      }
+    ],
+    "links": {
+      "portfolio": "",
+      "linkedin": "https://www.linkedin.com/in/yashkabra143/",
+      "github": "https://github.com/yashkabra143",
+      "upwork": "https://www.upwork.com/freelancers/~01125d841102f61285"
+    }
+  }
