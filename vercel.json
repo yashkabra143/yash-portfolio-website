@@ -11,5 +11,11 @@
       "source": "/api/(.*)",
       "destination": "/api/$1"
     }
+  ],
+  "static": [
+    {
+      "source": "attached_assets",
+      "destination": "/attached_assets"
+    }
   ]
 }
