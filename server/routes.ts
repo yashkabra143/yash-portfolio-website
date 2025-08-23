@@ -30,7 +30,7 @@ app.post('/api/contact', async (req, res) => {
         if (emailSent) {
           console.log('Email notification sent successfully');
         } else {
-          console.log('Email notification skipped - SendGrid not configured');
+          //console.log('Email notification skipped - SendGrid not configured');
         }
       })
       .catch(err => {
@@ -47,7 +47,6 @@ app.post('/api/contact', async (req, res) => {
           email: validatedData.email,
           subject: validatedData.subject,
           message: validatedData.message,
-          phone: validatedData.phone || 'Not provided', // Add phone field if available
           timestamp: timestamp, // Changed from createdAt to timestamp
           source: 'Portfolio Website' // Add source field
         };
