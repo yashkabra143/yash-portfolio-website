@@ -39,7 +39,7 @@ app.post('/api/contact', async (req, res) => {
 
     // Fire-and-forget call to n8n webhook (POST JSON)
     try {
-      const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL || 'https://triggerandflow.in/webhook/contact-form';
+      const n8nWebhookUrl = process.env.N8N_WEBHOOK_URL;
       if (n8nWebhookUrl) {
         const timestamp = new Date().toISOString();
         const payload = {
@@ -47,6 +47,7 @@ app.post('/api/contact', async (req, res) => {
           email: validatedData.email,
           subject: validatedData.subject,
           message: validatedData.message,
+          phone: validatedData.phone || 'Not provided', // Add phone field if available
           timestamp: timestamp, // Changed from createdAt to timestamp
           source: 'Portfolio Website' // Add source field
         };
