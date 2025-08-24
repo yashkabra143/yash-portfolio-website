@@ -1,15 +1,13 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/index.js", "use": "@vercel/node" },
+    { "src": "api/**/*.js", "use": "@vercel/node" },
     { "src": "attached_assets/**", "use": "@vercel/static" },
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/public" } }
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.js" },
-    { "src": "/api/contact", "dest": "/api/contact.js" },
+    { "src": "^/api/(.*)", "dest": "/api/$1" },
     { "src": "/attached_assets/(.*)", "dest": "/attached_assets/$1" },
-    { "src": "/assets/(.*)", "dest": "/dist/public/assets/$1" },
-    { "src": "/(.*)", "dest": "/dist/public/$1" }
+    { "src": "/(.*)", "dest": "/dist/$1" }
   ]
 }
