@@ -3,11 +3,11 @@
   "builds": [
     { "src": "api/**/*.js", "use": "@vercel/node" },
     { "src": "attached_assets/**", "use": "@vercel/static" },
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist" } }
+    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/public" } }
   ],
   "routes": [
     { "src": "^/api/(.*)", "dest": "/api/$1" },
     { "src": "/attached_assets/(.*)", "dest": "/attached_assets/$1" },
-    { "src": "/(.*)", "dest": "/dist/$1" }
+    { "src": "/(.*)", "dest": "/dist/public/$1" }
   ]
 }
