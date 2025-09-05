@@ -77,6 +77,7 @@ The portfolio includes several dynamic elements beyond static content:
 DATABASE_URL=postgresql://username:password@host:port/database
 SENDGRID_API_KEY=your_sendgrid_key (optional - for email notifications)
 GOOGLE_AI_API_KEY=your_google_ai_key (optional - for AI welcome messages)
+This is Test for me to commit
 ```
 
 ### Database Setup Flow
