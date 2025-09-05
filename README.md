@@ -214,13 +214,6 @@ To deploy this application to production, follow these steps:
    **Option 3: Platform-specific Deployment**
    This project can be deployed to any hosting platform that supports Node.js applications:
    
-   **Replit (current hosting)**
-   - Fork this project in Replit
-   - Create a new Postgresql database via the built-in Database functionality
-   - Add your secrets in the Secrets tab (SENDGRID_API_KEY, GOOGLE_AI_API_KEY)
-   - The DATABASE_URL will be automatically populated by Replit
-   - Deploy using the "Deploy" button in the Replit interface
-   - Optionally configure a custom domain in the "Deployments" settings
    
    **Other Platforms**
    - Vercel

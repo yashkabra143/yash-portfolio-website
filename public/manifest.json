@@ -1,22 +1,57 @@
 {
-  "name": "Yash Kabra Portfolio",
-  "short_name": "YK Portfolio",
-  "description": "Senior QA Engineer professional portfolio showcasing experience, skills, and projects",
-  "start_url": "/",
+  "name": "Yash Kabra - Senior Quality Assurance Engineer Portfolio",
+  "short_name": "Yash Kabra QA",
+  "description": "Professional portfolio of Yash Kabra, Senior Quality Assurance Engineer from Indore, India. Expert in Manual Testing, Test Automation, Selenium, API Testing, and Performance Testing with 8+ years experience.",
+  "start_url": "/?utm_source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "orientation": "portrait-primary",
   "background_color": "#ffffff",
   "theme_color": "#0984E3",
+  "categories": ["portfolio", "professional", "qa", "testing", "software"],
+  "lang": "en-US",
+  "dir": "ltr",
   "icons": [
     {
       "src": "favicon.svg",
-      "sizes": "48x48 72x72 96x96 128x128 256x256",
+      "sizes": "48x48 72x72 96x96 128x128 256x256 512x512",
       "type": "image/svg+xml",
       "purpose": "any maskable"
     },
     {
       "src": "yash-photo.jpg",
       "sizes": "192x192",
-      "type": "image/jpeg"
+      "type": "image/jpeg",
+      "purpose": "any"
+    },
+    {
+      "src": "yash-photo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "About Yash",
+      "short_name": "About",
+      "description": "Learn about Yash Kabra's QA expertise and experience",
+      "url": "/#about",
+      "icons": [{ "src": "favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Experience",
+      "short_name": "Work",
+      "description": "View professional experience and achievements",
+      "url": "/#experience",
+      "icons": [{ "src": "favicon.svg", "sizes": "96x96" }]
+    },
+    {
+      "name": "Contact",
+      "short_name": "Contact",
+      "description": "Get in touch with Yash Kabra",
+      "url": "/#contact",
+      "icons": [{ "src": "favicon.svg", "sizes": "96x96" }]
     }
   ]
 }

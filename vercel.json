@@ -1,20 +1,46 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/**/*.js", "use": "@vercel/node" },
-    { "src": "attached_assets/**", "use": "@vercel/static" },
-    { "src": "package.json", "use": "@vercel/static-build", "config": { "distDir": "dist/public" } }
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { 
+        "distDir": "dist/public" 
+      }
+    }
   ],
-  "routes": [
-    { "src": "^/api/(.*)", "dest": "/api/$1" },
-
-    { "src": "^/attached_assets/(.*)$", "dest": "/attached_assets/$1" },
-
-    { "src": "^/assets/(.*)$", "dest": "/dist/public/assets/$1", "check": true },
-    { "src": "^/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|avif|woff|woff2|ttf|map))$", "dest": "/dist/public/$1", "check": true },
-
-    { "src": "^/(.*)$", "dest": "/dist/public/$1", "check": true },
-
-    { "src": ".*", "dest": "/dist/public/index.html" }
+  "functions": {
+    "api/contact.js": {
+      "maxDuration": 10
+    }
+  },
+  "rewrites": [
+    {
+      "source": "/api/(.*)",
+      "destination": "/api/$1"
+    },
+    {
+      "source": "/attached_assets/(.*)",
+      "destination": "/attached_assets/$1"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        },
+        {
+          "key": "Access-Control-Allow-Methods",
+          "value": "GET, POST, PUT, DELETE, OPTIONS"
+        },
+        {
+          "key": "Access-Control-Allow-Headers",
+          "value": "Content-Type, Authorization"
+        }
+      ]
+    }
   ]
 }

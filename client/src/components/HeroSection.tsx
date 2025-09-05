@@ -15,7 +15,12 @@ const profileData = {
 
 export default function HeroSection() {
   return (
-    <section id="about" className="pt-10 md:pt-16 pb-20 bg-gradient-to-b from-muted to-background dark:from-slate-900 dark:to-background">
+    <section 
+      id="about" 
+      className="pt-10 md:pt-16 pb-20 bg-gradient-to-b from-muted to-background dark:from-slate-900 dark:to-background"
+      itemScope 
+      itemType="https://schema.org/Person"
+    >
       <div className="container mx-auto px-6">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -52,6 +57,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="inline-block px-3 py-1 text-sm font-medium text-primary bg-blue-100 dark:bg-blue-900 dark:bg-opacity-30 rounded-full mb-3"
+                itemProp="jobTitle"
               >
                 {profileData.title}
               </motion.span>
@@ -60,6 +66,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4, duration: 0.5 }}
                 className="text-4xl md:text-5xl font-bold font-poppins text-foreground mb-2"
+                itemProp="name"
               >
                 {profileData.name}
               </motion.h1>
@@ -68,6 +75,7 @@ export default function HeroSection() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.5, duration: 0.5 }}
                 className="text-lg text-muted-foreground dark:text-slate-400 mb-6"
+                itemProp="address"
               >
                 {profileData.location}
               </motion.p>
@@ -136,7 +144,7 @@ export default function HeroSection() {
               transition={{ delay: 0.8, duration: 0.5 }}
             >
               <h2 className="text-2xl font-semibold font-poppins mb-3 text-foreground">About Me</h2>
-              <p className="text-muted-foreground dark:text-slate-400 leading-relaxed mb-5">
+              <p className="text-muted-foreground dark:text-slate-400 leading-relaxed mb-5" itemProp="description">
                 {profileData.about}
               </p>
               <div className="flex flex-wrap gap-4">

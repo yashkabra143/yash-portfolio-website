@@ -1,4 +1,10 @@
 User-agent: *
 Allow: /
+Disallow: /api/
+Disallow: /admin/
 
-Sitemap: https://yashkabra-portfolio.replit.app/sitemap.xml
+# Indicate the preferred version of your site
+Host: https://yashkabra.com
+
+# Sitemap location
+Sitemap: https://yashkabra.com/sitemap.xml
