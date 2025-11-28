@@ -58,9 +58,9 @@ export default function ExperienceSection() {
                     damping: 15
                   }}
                 >
-                  <AccordionItem 
+                  <AccordionItem
                     value={exp.company || `experience-${index}`}
-                    className="bg-card dark:bg-slate-800 rounded-xl shadow-md border border-border/40 dark:border-slate-700/40 overflow-hidden group"
+                    className="glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 overflow-hidden group hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
                   >
                     <motion.div
                       whileHover={{ 
