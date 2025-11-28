@@ -96,21 +96,47 @@
 }
 
 @layer components {
+  /* Gradient backgrounds */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-primary via-blue-400 to-accent;
+  }
+
+  .gradient-primary-dark {
+    @apply dark:bg-gradient-to-r dark:from-primary dark:via-blue-300 dark:to-accent;
+  }
+
+  .gradient-section {
+    @apply bg-gradient-to-br from-blue-50 via-transparent to-cyan-50;
+  }
+
+  .gradient-section-dark {
+    @apply dark:bg-gradient-to-br dark:from-blue-950/20 dark:via-transparent dark:to-cyan-950/20;
+  }
+
+  /* Glassmorphism effect */
+  .glass-effect {
+    @apply bg-white/80 dark:bg-slate-800/60 backdrop-blur-md border border-white/20 dark:border-slate-700/30;
+  }
+
+  .glass-effect-strong {
+    @apply bg-white/95 dark:bg-slate-800/80 backdrop-blur-lg border border-white/30 dark:border-slate-600/40;
+  }
+
   /* Experience section animation helpers */
   .experience-card {
-    @apply transition-all duration-300;
+    @apply transition-all duration-300 shadow-md hover:shadow-xl;
   }
-  
+
   .experience-card:hover {
-    @apply shadow-lg translate-y-[-2px];
+    @apply translate-y-[-4px];
   }
 
   .project-card {
-    @apply transition-all duration-300;
+    @apply transition-all duration-300 shadow-lg hover:shadow-2xl;
   }
 
   .project-card:hover {
-    @apply -translate-y-1 shadow-lg;
+    @apply -translate-y-2 shadow-2xl;
   }
 
   .nav-link {
@@ -119,7 +145,7 @@
 
   .nav-link::after {
     content: '';
-    @apply absolute w-0 h-0.5 bottom-[-2px] left-0 bg-primary transition-all duration-300;
+    @apply absolute w-0 h-0.5 bottom-[-2px] left-0 bg-gradient-to-r from-primary to-accent transition-all duration-300;
   }
 
   .nav-link:hover::after {
@@ -129,14 +155,63 @@
   .nav-link.active::after {
     @apply w-full;
   }
-  
+
+  /* Button styles */
+  .btn-gradient {
+    @apply bg-gradient-to-r from-primary to-blue-500 hover:from-primary/90 hover:to-blue-500/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .btn-gradient-accent {
+    @apply bg-gradient-to-r from-accent to-cyan-400 hover:from-accent/90 hover:to-cyan-400/90 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300;
+  }
+
+  .btn-outline-gradient {
+    @apply border-2 border-gradient-to-r text-primary hover:bg-primary/5 transition-all duration-300;
+  }
+
+  /* Card shadow depth */
+  .shadow-card {
+    @apply shadow-md;
+  }
+
+  .shadow-card-hover {
+    @apply hover:shadow-xl hover:shadow-primary/10 transition-all duration-300;
+  }
+
+  /* Gradient text */
+  .text-gradient {
+    @apply bg-gradient-to-r from-primary via-blue-500 to-accent bg-clip-text text-transparent;
+  }
+
+  .text-gradient-cyan {
+    @apply bg-gradient-to-r from-accent via-cyan-400 to-blue-400 bg-clip-text text-transparent;
+  }
+
   /* Animation delay utility classes */
   .animation-delay-200 {
     animation-delay: 0.2s;
   }
-  
+
   .animation-delay-500 {
     animation-delay: 0.5s;
+  }
+
+  /* Section separators */
+  .section-divider {
+    @apply relative h-1 bg-gradient-to-r from-transparent via-primary to-transparent my-12;
+  }
+
+  .section-divider-accent {
+    @apply relative h-1 bg-gradient-to-r from-transparent via-accent to-transparent my-12;
+  }
+
+  /* Hover glow effect */
+  .hover-glow {
+    @apply hover:shadow-lg hover:shadow-primary/20 transition-all duration-300;
+  }
+
+  .hover-glow-accent {
+    @apply hover:shadow-lg hover:shadow-accent/20 transition-all duration-300;
   }
 }
 
