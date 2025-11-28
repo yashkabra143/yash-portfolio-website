@@ -72,13 +72,13 @@ export default function SkillsSection() {
                         {item.proficiency}%
                       </span>
                     </div>
-                    <div className="relative h-2 w-full overflow-hidden rounded-full bg-background dark:bg-slate-700">
-                      <motion.div 
+                    <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-700 dark:to-slate-600">
+                      <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${item.proficiency}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: idx * 0.1 }}
-                        className="h-full bg-primary rounded-full"
+                        className="h-full bg-gradient-to-r from-primary via-blue-500 to-accent rounded-full shadow-lg shadow-primary/50"
                       />
                     </div>
                   </div>
