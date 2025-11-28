@@ -194,10 +194,10 @@ export default function ContactSection() {
                   </FormItem>
                 )}
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                className="w-full bg-gradient-to-r from-primary to-blue-600 dark:from-primary dark:to-blue-400 text-white py-3 rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 font-semibold disabled:opacity-50 hover:-translate-y-1"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
