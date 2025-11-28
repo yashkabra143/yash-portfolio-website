@@ -112,12 +112,12 @@ export default function ContactSection() {
           ))}
         </div>
         
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-2xl mx-auto mt-12 bg-muted dark:bg-slate-800 rounded-xl shadow-sm p-8"
+          className="max-w-2xl mx-auto mt-12 glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 p-9 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
         >
           <h3 className="text-2xl font-semibold mb-6 text-center text-foreground">Send Me a Message</h3>
           <Form {...form}>
