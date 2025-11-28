@@ -155,11 +155,11 @@ export default function ProjectsSection() {
                 y: -8, 
                 boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" 
               }}
-              className="project-card bg-card dark:bg-slate-800 text-card-foreground rounded-xl overflow-hidden shadow-sm transition-all duration-300"
+              className="project-card glass-effect rounded-2xl overflow-hidden shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 group"
             >
-              <motion.div 
-                className="h-48 bg-gradient-to-r from-[#0984E3] to-[#74B9FF] flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
+              <motion.div
+                className="h-48 bg-gradient-to-br from-primary via-blue-500 to-accent flex items-center justify-center group-hover:shadow-inner transition-all duration-300"
+                whileHover={{ scale: 1.08 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 {projectIcons[project.icon as keyof typeof projectIcons]}
