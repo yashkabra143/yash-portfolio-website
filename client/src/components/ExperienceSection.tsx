@@ -20,14 +20,17 @@ export default function ExperienceSection() {
   const earlierExp = experienceData.find(exp => exp.type === "earlier");
   
   return (
-    <section id="experience" className="py-16 bg-muted dark:bg-slate-900">
+    <section id="experience" className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-8 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Professional Experience
         </motion.h2>
