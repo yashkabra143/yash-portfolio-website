@@ -90,7 +90,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="px-6 py-4 bg-background md:hidden overflow-hidden dark:border-t dark:border-slate-700/30"
+            className="px-6 py-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md md:hidden overflow-hidden border-t border-primary/10 dark:border-primary/20"
           >
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (
