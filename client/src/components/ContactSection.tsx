@@ -95,9 +95,9 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-muted dark:bg-slate-800 rounded-xl p-6 text-center shadow-sm"
+              className="glass-effect rounded-2xl p-8 text-center shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group"
             >
-              <div className="w-16 h-16 rounded-full bg-primary mx-auto flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mx-auto flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
