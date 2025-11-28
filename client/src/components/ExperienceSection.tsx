@@ -208,7 +208,7 @@ export default function ExperienceSection() {
                               boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
                               borderColor: "rgba(66, 153, 225, 0.5)"
                             }}
-                            className="bg-muted/50 dark:bg-slate-900/50 rounded-lg p-4 border border-border/20 dark:border-slate-700/20 transition-all duration-300"
+                            className="glass-effect rounded-xl p-5 border-2 border-gradient-to-br from-primary/30 to-accent/20 dark:border-gradient-to-br dark:from-primary/40 dark:to-accent/30 transition-all duration-300"
                           >
                             <h4 className="text-base font-semibold mb-2 text-foreground">{position.title}</h4>
                             <div className="flex items-center gap-2 text-sm text-primary mb-2">
