@@ -64,14 +64,21 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-background">
-      <div className="container mx-auto px-6">
-        <motion.h2 
+    <section id="contact" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 relative overflow-hidden">
+      {/* Background gradient blobs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-t from-accent/10 to-primary/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-12 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Get In Touch
         </motion.h2>
