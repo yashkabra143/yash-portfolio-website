@@ -50,10 +50,10 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 bg-background shadow-sm dark:shadow-slate-700/20">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md dark:shadow-primary/10 border-b border-primary/10 dark:border-primary/20">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold font-poppins text-foreground">
-          <span className="text-primary">YK</span>
+        <a href="#" className="text-2xl font-bold font-poppins text-gradient hover:scale-110 transition-transform duration-300">
+          YK
         </a>
         <div className="hidden md:flex items-center space-x-8">
           <nav className="flex space-x-8">
