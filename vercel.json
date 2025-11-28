@@ -3,10 +3,25 @@
   "buildCommand": "npm run vercel-build",
   "outputDirectory": "dist/public",
   "routes": [
-    { "src": "^/api/(.*)", "dest": "/api/$1" },
-    { "src": "^/attached_assets/(.*)$", "dest": "/attached_assets/$1" },
-    { "src": "^/assets/(.*)$", "dest": "/assets/$1" },
-    { "src": "^/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|avif|woff|woff2|ttf|map))$", "dest": "/$1" },
-    { "src": "^/(.*)$", "dest": "/index.html" }
+    {
+      "src": "^/api/(.*)",
+      "dest": "/api/$1"
+    },
+    {
+      "src": "^/attached_assets/(.*)$",
+      "dest": "/attached_assets/$1"
+    },
+    {
+      "src": "^/assets/(.*)$",
+      "dest": "/assets/$1"
+    },
+    {
+      "src": "^/(.*\\.(css|js|png|jpg|jpeg|gif|svg|ico|webp|avif|woff|woff2|ttf|map|json))$",
+      "dest": "/$1"
+    },
+    {
+      "src": "^/(.*)$",
+      "dest": "/index.html"
+    }
   ]
 }
