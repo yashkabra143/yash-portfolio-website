@@ -41,7 +41,7 @@ export default function CertificationsSection() {
             >
               <div className="p-6">
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary mr-4 flex-shrink-0 group-hover:bg-primary/30 transition-colors">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 dark:from-primary/40 dark:to-accent/30 flex items-center justify-center text-primary mr-4 flex-shrink-0 group-hover:scale-110 transition-all duration-300">
                     <Award size={24} />
                   </div>
                   <div>
