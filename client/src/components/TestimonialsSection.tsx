@@ -43,9 +43,9 @@ export default function TestimonialsSection() {
                 <Quote size={20} />
               </div>
               
-              <div className="mb-4 flex">
+              <div className="mb-4 flex gap-1">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} size={16} className="text-yellow-500 fill-yellow-500" />
+                  <Star key={i} size={18} className="text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform" />
                 ))}
               </div>
               
