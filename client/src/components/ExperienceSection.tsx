@@ -157,9 +157,9 @@ export default function ExperienceSection() {
                   stiffness: 50
                 }}
               >
-                <AccordionItem 
+                <AccordionItem
                   value="earlier"
-                  className="bg-card dark:bg-slate-800 rounded-xl shadow-md border border-border/40 dark:border-slate-700/40 overflow-hidden"
+                  className="glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 overflow-hidden hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
                 >
                   <motion.div
                     whileHover={{ 
