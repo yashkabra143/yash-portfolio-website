@@ -8,6 +8,24 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
+// Set proper response headers to prevent body stream issues
+app.use((req, res, next) => {
+  // Set cache headers
+  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+  res.set('Pragma', 'no-cache');
+  res.set('Expires', '0');
+
+  // Set proper content type
+  res.set('Content-Type', 'application/json');
+
+  // CORS headers for chat widget
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+
+  next();
+});
+
 // Serve assets from the attached_assets folder
 app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets')));
 

@@ -66,19 +66,10 @@ app.post('/api/contact', async (req, res) => {
             
             if (resp.ok) {
               console.log('n8n webhook called successfully');
-              // Optionally log the response
-              try {
-                const responseData = await resp.json();
-                console.log('n8n response:', responseData);
-              } catch {
-                console.log('n8n webhook responded but no JSON body');
-              }
+              // Don't try to read response body - just log success
+              console.log('n8n webhook status:', resp.status);
             } else {
-              let bodyText = '';
-              try {
-                bodyText = await resp.text();
-              } catch {}
-              console.error('n8n webhook responded with non-OK status:', resp.status, bodyText ? `:: ${bodyText}` : '');
+              console.error('n8n webhook responded with status:', resp.status);
             }
           } catch (err) {
             console.error('Failed to call n8n webhook:', err);
@@ -91,23 +82,26 @@ app.post('/api/contact', async (req, res) => {
       console.error('Error preparing n8n webhook call:', err);
     }
     
-    return res.status(201).json({
+    res.status(201).json({
       success: true,
       message: "Message received successfully",
       data: message
     });
+    return;
   } catch (error) {
     if (error instanceof z.ZodError) {
-      return res.status(400).json({
+      res.status(400).json({
         success: false,
         errors: error.errors
       });
+      return;
     }
     console.error('Error saving contact message:', error);
-    return res.status(500).json({
+    res.status(500).json({
       success: false,
       message: "An error occurred while saving your message"
     });
+    return;
   }
 });
 

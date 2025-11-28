@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Ticket, Baby, Bath, Coins, Cloud, Filter } from "lucide-react";
+import { Ticket, Baby, Bath, Coins, Cloud, Filter, RotateCcw, Layers, Building2, Zap } from "lucide-react";
 import { projectsData, projectFilters } from "@/lib/data";
 import { useState, useEffect, Suspense } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
@@ -83,63 +83,131 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="max-w-5xl mx-auto mb-10 p-6 glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20"
+          className="max-w-5xl mx-auto mb-10"
         >
-          <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
-            <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-2 md:mb-0">
-              <Filter size={16} />
-              <span>Filter Projects:</span>
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 border border-slate-200 dark:border-slate-700 shadow-xl">
+            {/* Animated background elements */}
+            <motion.div
+              className="absolute top-0 right-0 w-72 h-72 bg-gradient-to-br from-primary/10 to-accent/10 rounded-full blur-3xl"
+              animate={{
+                x: [0, 20, 0],
+                y: [0, -20, 0],
+              }}
+              transition={{
+                duration: 8,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Content */}
+            <div className="relative z-10 p-8 md:p-10">
+              {/* Header */}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6 mb-8">
+                <div className="flex items-center gap-3">
+                  <motion.div
+                    className="p-3 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20"
+                    whileHover={{ scale: 1.1, rotate: 10 }}
+                  >
+                    <Filter className="w-6 h-6 text-primary" />
+                  </motion.div>
+                  <div>
+                    <h3 className="text-xl font-bold text-foreground">Filter Projects</h3>
+                    <p className="text-sm text-muted-foreground">Refine by category, industry, or testing type</p>
+                  </div>
+                </div>
+
+                {/* Active filters indicator */}
+                {(categoryFilter !== "All Categories" || industryFilter !== "All Industries" || testingTypeFilter !== "All Testing Types") && (
+                  <motion.div
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    className="px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium"
+                  >
+                    Filters Active
+                  </motion.div>
+                )}
+              </div>
+
+              {/* Filters Grid */}
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                {/* Category Filter */}
+                <motion.div whileHover={{ y: -2 }} className="group">
+                  <label className="block text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Layers className="w-4 h-4 text-primary" />
+                    Category
+                  </label>
+                  <Select value={categoryFilter} onValueChange={setCategoryFilter}>
+                    <SelectTrigger className="h-11 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-lg hover:border-primary/50 dark:hover:border-primary/50 transition-all group-hover:shadow-lg group-hover:shadow-primary/10">
+                      <SelectValue placeholder="Select category" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {projectFilters.category.map((category) => (
+                        <SelectItem key={category} value={category}>{category}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </motion.div>
+
+                {/* Industry Filter */}
+                <motion.div whileHover={{ y: -2 }} className="group">
+                  <label className="block text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-primary" />
+                    Industry
+                  </label>
+                  <Select value={industryFilter} onValueChange={setIndustryFilter}>
+                    <SelectTrigger className="h-11 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-lg hover:border-primary/50 dark:hover:border-primary/50 transition-all group-hover:shadow-lg group-hover:shadow-primary/10">
+                      <SelectValue placeholder="Select industry" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {projectFilters.industry.map((industry) => (
+                        <SelectItem key={industry} value={industry}>{industry}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </motion.div>
+
+                {/* Testing Type Filter */}
+                <motion.div whileHover={{ y: -2 }} className="group">
+                  <label className="block text-sm font-semibold text-foreground mb-2 flex items-center gap-2">
+                    <Zap className="w-4 h-4 text-primary" />
+                    Testing Type
+                  </label>
+                  <Select value={testingTypeFilter} onValueChange={setTestingTypeFilter}>
+                    <SelectTrigger className="h-11 bg-white dark:bg-slate-700 border-2 border-slate-200 dark:border-slate-600 rounded-lg hover:border-primary/50 dark:hover:border-primary/50 transition-all group-hover:shadow-lg group-hover:shadow-primary/10">
+                      <SelectValue placeholder="Select testing type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {projectFilters.testingType.map((type) => (
+                        <SelectItem key={type} value={type}>{type}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </motion.div>
+              </div>
+
+              {/* Reset Button */}
+              <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
+                <Button
+                  onClick={resetFilters}
+                  className="w-full md:w-auto h-11 bg-gradient-to-r from-primary to-accent hover:shadow-lg hover:shadow-primary/30 text-white font-semibold rounded-lg transition-all duration-300 flex items-center justify-center gap-2"
+                >
+                  <RotateCcw className="w-4 h-4" />
+                  Reset All Filters
+                </Button>
+              </motion.div>
             </div>
-            
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 w-full">
-              <Select value={categoryFilter} onValueChange={setCategoryFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Category" />
-                </SelectTrigger>
-                <SelectContent>
-                  {projectFilters.category.map((category) => (
-                    <SelectItem key={category} value={category}>{category}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              
-              <Select value={industryFilter} onValueChange={setIndustryFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Industry" />
-                </SelectTrigger>
-                <SelectContent>
-                  {projectFilters.industry.map((industry) => (
-                    <SelectItem key={industry} value={industry}>{industry}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-              
-              <Select value={testingTypeFilter} onValueChange={setTestingTypeFilter}>
-                <SelectTrigger>
-                  <SelectValue placeholder="Testing Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {projectFilters.testingType.map((type) => (
-                    <SelectItem key={type} value={type}>{type}</SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-            
-            <Button 
-              variant="outline" 
-              size="sm" 
-              onClick={resetFilters}
-              className="md:ml-2 whitespace-nowrap"
-            >
-              Reset Filters
-            </Button>
           </div>
-          
+
+          {/* No results message */}
           {filteredProjects.length === 0 && (
-            <div className="text-center p-8 text-muted-foreground">
-              <p>No projects match the selected filters.</p>
-            </div>
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-8 text-center p-8 bg-gradient-to-br from-slate-50 to-white dark:from-slate-800 dark:to-slate-900 rounded-xl border border-slate-200 dark:border-slate-700"
+            >
+              <p className="text-lg text-muted-foreground">No projects match the selected filters.</p>
+            </motion.div>
           )}
         </motion.div>
         

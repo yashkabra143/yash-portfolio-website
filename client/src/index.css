@@ -228,8 +228,64 @@ button.chat-input-send-button {
     line-height: 0px;
 }
 
+/* n8n Chat Widget Styling */
 div#n8n-chat {
-    @apply nav-link text-foreground hover:text-primary font-medium transition-colors;
+    font-family: inherit;
+    --chat-primary-color: #0984E3;
+    --chat-secondary-color: #00B4DB;
+}
+
+#n8n-chat .chat-window {
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+#n8n-chat .chat-header {
+    background: linear-gradient(135deg, #0984E3 0%, #00B4DB 100%);
+}
+
+#n8n-chat .chat-messages {
+    display: flex;
+    flex-direction: column;
+}
+
+#n8n-chat .chat-message {
+    max-width: 75%;
+    word-wrap: break-word;
+}
+
+#n8n-chat .user-message {
+    background: linear-gradient(135deg, #0984E3 0%, #0066CC 100%);
+    color: white;
+    align-self: flex-end;
+    border-radius: 12px 4px 12px 12px;
+}
+
+#n8n-chat .bot-message {
+    background: #f3f4f6;
+    color: #1f2937;
+    align-self: flex-start;
+    border-radius: 4px 12px 12px 12px;
+}
+
+@media (prefers-color-scheme: dark) {
+    #n8n-chat .bot-message {
+        background: #374151;
+        color: #f3f4f6;
+    }
+}
+
+#n8n-chat input:focus {
+    border-color: #0984E3;
+    box-shadow: 0 0 0 3px rgba(9, 132, 227, 0.1);
+}
+
+#n8n-chat button[type="submit"] {
+    background: linear-gradient(135deg, #0984E3 0%, #00B4DB 100%);
+}
+
+#n8n-chat .chat-bubble-button {
+    background: linear-gradient(135deg, #0984E3 0%, #00B4DB 100%);
 }
 
 .chat-heading {
