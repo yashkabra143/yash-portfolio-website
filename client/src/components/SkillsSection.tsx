@@ -49,15 +49,15 @@ export default function SkillsSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {skillsData.map((skill, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-muted dark:bg-slate-800 rounded-xl p-6 shadow-sm"
+              className="glass-effect rounded-2xl p-7 shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 dark:from-primary/40 dark:to-accent/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 {skillIcons[skill.category as keyof typeof skillIcons]}
               </div>
               <h3 className="text-xl font-semibold mb-4 text-foreground">{skill.category}</h3>
