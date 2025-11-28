@@ -68,7 +68,7 @@ export default function ExperienceSection() {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      <AccordionTrigger className="px-6 py-4 hover:bg-muted/50 dark:hover:bg-slate-700/20 data-[state=open]:bg-primary/10 dark:data-[state=open]:bg-primary/20 border-b border-border/30 dark:border-slate-700/30 transition-all group">
+                      <AccordionTrigger className="px-6 py-4 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/15 dark:hover:to-accent/15 data-[state=open]:bg-gradient-to-r data-[state=open]:from-primary/20 data-[state=open]:to-accent/20 dark:data-[state=open]:from-primary/30 dark:data-[state=open]:to-accent/30 border-b border-primary/10 dark:border-primary/20 transition-all duration-300 group">
                         <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-2 text-left">
                           <div className="flex items-center gap-2">
                             <motion.div
