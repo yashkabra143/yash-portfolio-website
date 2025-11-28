@@ -12,6 +12,7 @@ import ContactSection from "@/components/ContactSection";
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import SkipToContent from "@/components/SkipToContent";
 import Footer from "@/components/Footer";
+import { ChatBot } from "@/components/ChatBot";
 import { useEffect } from "react";
 import { useActiveSection } from "@/lib/hooks";
 
@@ -59,6 +60,7 @@ export default function Home() {
         <ContactSection />
       </main>
       <Footer />
+      <ChatBot />
     </>
   );
 }
