@@ -37,7 +37,7 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-card dark:bg-slate-800 rounded-xl shadow-md p-6 relative border border-border/40 dark:border-slate-700/40 transition-all duration-300 hover:shadow-lg"
+              className="glass-effect rounded-2xl shadow-lg p-7 relative border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group"
             >
               <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary">
                 <Quote size={20} />
