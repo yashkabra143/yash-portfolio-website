@@ -61,8 +61,8 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`nav-link text-foreground hover:text-primary font-medium transition-colors ${
-                  activeSection === link.href.substring(1) ? "active" : ""
+                className={`nav-link text-foreground dark:text-slate-200 hover:text-primary dark:hover:text-accent font-semibold transition-colors duration-300 ${
+                  activeSection === link.href.substring(1) ? "active text-primary dark:text-accent" : ""
                 }`}
               >
                 {link.label}
