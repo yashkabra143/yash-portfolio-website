@@ -70,7 +70,28 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    @apply font-poppins;
+    @apply font-poppins font-700;
+    letter-spacing: -0.02em;
+  }
+
+  h1 {
+    @apply text-5xl md:text-6xl;
+    line-height: 1.2;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl;
+    line-height: 1.3;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl;
+    line-height: 1.4;
+  }
+
+  p {
+    line-height: 1.7;
+    letter-spacing: 0.3px;
   }
 }
 
