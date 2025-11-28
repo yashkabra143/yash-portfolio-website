@@ -83,7 +83,7 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="max-w-5xl mx-auto mb-10 p-4 bg-card dark:bg-slate-800 rounded-xl shadow-sm border border-border/40 dark:border-slate-700/40"
+          className="max-w-5xl mx-auto mb-10 p-6 glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20"
         >
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
             <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-2 md:mb-0">
