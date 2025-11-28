@@ -37,7 +37,7 @@ export default function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-card dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border border-border/40 dark:border-slate-700/40 transition-all duration-300 hover:shadow-lg group"
+              className="glass-effect rounded-2xl shadow-lg overflow-hidden border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group"
             >
               <div className="p-6">
                 <div className="flex items-start">
