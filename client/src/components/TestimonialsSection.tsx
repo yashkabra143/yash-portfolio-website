@@ -39,7 +39,7 @@ export default function TestimonialsSection() {
               transition={{ duration: 0.5, delay: 0.1 * index }}
               className="glass-effect rounded-2xl shadow-lg p-7 relative border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group"
             >
-              <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <Quote size={20} />
               </div>
               
