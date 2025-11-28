@@ -51,14 +51,17 @@ export default function ProjectsSection() {
   };
 
   return (
-    <section id="projects" className="py-16 bg-muted dark:bg-slate-900">
+    <section id="projects" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-6 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Projects
         </motion.h2>
@@ -80,7 +83,7 @@ export default function ProjectsSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="max-w-5xl mx-auto mb-10 p-4 bg-card dark:bg-slate-800 rounded-xl shadow-sm border border-border/40 dark:border-slate-700/40"
+          className="max-w-5xl mx-auto mb-10 p-6 glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20"
         >
           <div className="flex flex-col md:flex-row gap-4 items-start md:items-center">
             <div className="flex items-center gap-1.5 text-sm text-muted-foreground mb-2 md:mb-0">
@@ -152,11 +155,11 @@ export default function ProjectsSection() {
                 y: -8, 
                 boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" 
               }}
-              className="project-card bg-card dark:bg-slate-800 text-card-foreground rounded-xl overflow-hidden shadow-sm transition-all duration-300"
+              className="project-card glass-effect rounded-2xl overflow-hidden shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 group"
             >
-              <motion.div 
-                className="h-48 bg-gradient-to-r from-[#0984E3] to-[#74B9FF] flex items-center justify-center"
-                whileHover={{ scale: 1.05 }}
+              <motion.div
+                className="h-48 bg-gradient-to-br from-primary via-blue-500 to-accent flex items-center justify-center group-hover:shadow-inner transition-all duration-300"
+                whileHover={{ scale: 1.08 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 {projectIcons[project.icon as keyof typeof projectIcons]}

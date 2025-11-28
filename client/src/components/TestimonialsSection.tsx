@@ -4,14 +4,17 @@ import { Quote, Star } from "lucide-react";
 
 export default function TestimonialsSection() {
   return (
-    <section id="testimonials" className="py-16 bg-background dark:bg-background">
+    <section id="testimonials" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-4 text-foreground"
+          className="text-4xl font-bold text-center mb-4 text-foreground"
         >
           Client Testimonials
         </motion.h2>
@@ -34,15 +37,15 @@ export default function TestimonialsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-card dark:bg-slate-800 rounded-xl shadow-md p-6 relative border border-border/40 dark:border-slate-700/40 transition-all duration-300 hover:shadow-lg"
+              className="glass-effect rounded-2xl shadow-lg p-7 relative border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group"
             >
-              <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary/10 dark:bg-primary/20 rounded-full flex items-center justify-center text-primary">
+              <div className="absolute -top-4 -left-4 w-12 h-12 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center text-white shadow-lg group-hover:scale-110 transition-transform duration-300">
                 <Quote size={20} />
               </div>
               
-              <div className="mb-4 flex">
+              <div className="mb-4 flex gap-1">
                 {Array.from({ length: testimonial.rating }).map((_, i) => (
-                  <Star key={i} size={16} className="text-yellow-500 fill-yellow-500" />
+                  <Star key={i} size={18} className="text-yellow-400 fill-yellow-400 group-hover:scale-110 transition-transform" />
                 ))}
               </div>
               

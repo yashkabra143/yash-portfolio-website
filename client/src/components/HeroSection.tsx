@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, Briefcase, Github, Linkedin } from "lucide-react";
+import { Mail, Phone, Briefcase, Github, Linkedin, ArrowRight } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import HeroAnimation from "./HeroAnimation";
 import { Suspense } from "react";
@@ -17,155 +17,196 @@ export default function HeroSection() {
   return (
     <section 
       id="about" 
-      className="pt-10 md:pt-16 pb-20 bg-gradient-to-b from-muted to-background dark:from-slate-900 dark:to-background"
+      className="pt-10 md:pt-20 pb-20 relative overflow-hidden"
       itemScope 
       itemType="https://schema.org/Person"
     >
-      <div className="container mx-auto px-6">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 pointer-events-none"></div>
+      
+      {/* Floating gradient blobs */}
+      <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl opacity-50 dark:opacity-30 pointer-events-none animate-pulse"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-t from-accent/20 to-primary/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none animate-pulse"></div>
+      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl opacity-30 dark:opacity-15 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex flex-col md:flex-row items-center"
+          transition={{ duration: 0.6 }}
+          className="flex flex-col md:flex-row items-center gap-8 md:gap-16"
         >
-          <div className="md:w-1/3 mb-8 md:mb-0 flex flex-col items-center">
+          {/* Left Column - Profile Image & Animation */}
+          <div className="md:w-1/3 flex flex-col items-center">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-              className="rounded-full w-56 h-56 overflow-hidden border-4 border-background shadow-lg dark:shadow-slate-700/30 mb-6"
+              transition={{ delay: 0.2, duration: 0.6 }}
+              className="relative mb-8"
             >
-              <Avatar className="w-full h-full">
-                <AvatarImage src="/attached_assets/yash-photo.jpg" alt="Yash Kabra" className="w-full h-full object-cover" />
-                <AvatarFallback>YK</AvatarFallback>
-              </Avatar>
+              {/* Glow effect */}
+              <div className="absolute inset-0 rounded-full bg-gradient-to-r from-primary via-accent to-blue-400 opacity-75 blur-lg dark:opacity-50 animate-pulse"></div>
+              
+              {/* Profile Image */}
+              <div className="relative w-56 h-56 rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-2xl dark:shadow-primary/20">
+                <Avatar className="w-full h-full">
+                  <AvatarImage src="/attached_assets/yash-photo.jpg" alt="Yash Kabra" className="w-full h-full object-cover" />
+                  <AvatarFallback>YK</AvatarFallback>
+                </Avatar>
+              </div>
             </motion.div>
             
+            {/* Hero Animation */}
             <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="w-full mt-6"
+              className="w-full"
             >
-              <HeroAnimation />
+              <Suspense fallback={<div className="h-32"></div>}>
+                <HeroAnimation />
+              </Suspense>
             </motion.div>
           </div>
-          <div className="md:w-2/3 md:pl-12">
-            <div className="mb-4">
-              <motion.span 
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-                className="inline-block px-3 py-1 text-sm font-medium text-primary bg-blue-100 dark:bg-blue-900 dark:bg-opacity-30 rounded-full mb-3"
-                itemProp="jobTitle"
-              >
-                {profileData.title}
-              </motion.span>
-              <motion.h1
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-                className="text-4xl md:text-5xl font-bold font-poppins text-foreground mb-2"
-                itemProp="name"
-              >
-                {profileData.name}
-              </motion.h1>
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.5, duration: 0.5 }}
-                className="text-lg text-muted-foreground dark:text-slate-400 mb-6"
-                itemProp="address"
-              >
-                {profileData.location}
-              </motion.p>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.5 }}
-                className="flex flex-wrap items-center gap-4 mb-6"
-              >
-                <a 
-                  href={`mailto:${profileData.email}`} 
-                  className="flex items-center text-muted-foreground dark:text-slate-400 hover:text-primary transition-colors"
-                >
-                  <Mail className="mr-2 h-4 w-4" />
-                  <span>{profileData.email}</span>
-                </a>
-                <a 
-                  href={`tel:${profileData.phone}`} 
-                  className="flex items-center text-muted-foreground dark:text-slate-400 hover:text-primary transition-colors"
-                >
-                  <Phone className="mr-2 h-4 w-4" />
-                  <span>{profileData.phone}</span>
-                </a>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.7, duration: 0.5 }}
-                className="flex flex-col gap-3 mb-6"
-              >
-                <h3 className="text-sm font-medium text-muted-foreground">Connect with me:</h3>
-                <div className="flex flex-wrap gap-3">
-                  <a 
-                    href="https://www.linkedin.com/in/yashkabra143/" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 rounded-md bg-primary/10 dark:bg-primary/20 text-primary hover:bg-primary/20 dark:hover:bg-primary/30 transition-colors"
-                    aria-label="LinkedIn Profile"
-                  >
-                    <Linkedin size={16} /> <span className="text-sm font-medium">LinkedIn</span>
-                  </a>
-                  <a 
-                    href="https://github.com/yashkabra143" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 rounded-md bg-foreground/10 dark:bg-foreground/20 text-foreground hover:bg-foreground/20 dark:hover:bg-foreground/30 transition-colors"
-                    aria-label="GitHub Profile"
-                  >
-                    <Github size={16} /> <span className="text-sm font-medium">GitHub</span>
-                  </a>
-                  <a 
-                    href="https://www.upwork.com/freelancers/~01125d841102f61285" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-3 py-2 rounded-md bg-green-600/10 dark:bg-green-600/20 text-green-600 dark:text-green-500 hover:bg-green-600/20 dark:hover:bg-green-600/30 transition-colors"
-                    aria-label="Upwork Profile"
-                  >
-                    <Briefcase size={16} /> <span className="text-sm font-medium">Upwork</span>
-                  </a>
-                </div>
-              </motion.div>
-            </div>
+
+          {/* Right Column - Content */}
+          <div className="md:w-2/3 flex flex-col">
+            {/* Title Badge */}
+            <motion.span 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3, duration: 0.5 }}
+              className="inline-block w-fit px-4 py-2 text-sm font-semibold text-primary bg-gradient-to-r from-primary/10 via-blue-500/5 to-accent/10 dark:from-primary/20 dark:via-blue-500/10 dark:to-accent/20 rounded-full mb-6 border border-primary/20 dark:border-primary/40 shadow-sm"
+            >
+              {profileData.title}
+            </motion.span>
+
+            {/* Name */}
+            <motion.h1
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35, duration: 0.6 }}
+              className="text-gradient mb-3 leading-tight"
+              itemProp="name"
+            >
+              {profileData.name}
+            </motion.h1>
+
+            {/* Location */}
+            <motion.p
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.5 }}
+              className="text-lg text-muted-foreground dark:text-slate-300 mb-8 font-medium"
+              itemProp="address"
+            >
+              📍 {profileData.location}
+            </motion.p>
+
+            {/* Contact Info */}
             <motion.div
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8, duration: 0.5 }}
+              transition={{ delay: 0.45, duration: 0.5 }}
+              className="flex flex-wrap items-center gap-6 mb-8"
             >
-              <h2 className="text-2xl font-semibold font-poppins mb-3 text-foreground">About Me</h2>
-              <p className="text-muted-foreground dark:text-slate-400 leading-relaxed mb-5" itemProp="description">
-                {profileData.about}
-              </p>
-              <div className="flex flex-wrap gap-4">
+              <a 
+                href={`mailto:${profileData.email}`} 
+                className="flex items-center gap-2 text-muted-foreground dark:text-slate-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 group"
+              >
+                <Mail className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="text-sm md:text-base">{profileData.email}</span>
+              </a>
+              <a 
+                href={`tel:${profileData.phone}`} 
+                className="flex items-center gap-2 text-muted-foreground dark:text-slate-300 hover:text-primary dark:hover:text-accent transition-colors duration-300 group"
+              >
+                <Phone className="h-5 w-5 group-hover:scale-110 transition-transform" />
+                <span className="text-sm md:text-base">{profileData.phone}</span>
+              </a>
+            </motion.div>
+
+            {/* Social Links */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5, duration: 0.5 }}
+              className="flex flex-col gap-4 mb-8"
+            >
+              <h3 className="text-sm font-semibold text-foreground uppercase tracking-wider">Connect with me</h3>
+              <div className="flex flex-wrap gap-3">
                 <a 
-                  href="#contact" 
-                  className="inline-block px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-blue-700 transition-colors"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                  }}
+                  href="https://www.linkedin.com/in/yashkabra143/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-primary/80 to-blue-500/80 dark:from-primary dark:to-blue-400 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 group hover:-translate-y-1"
+                  aria-label="LinkedIn Profile"
                 >
-                  Contact Me
+                  <Linkedin size={18} className="group-hover:scale-110 transition-transform" /> 
+                  <span>LinkedIn</span>
                 </a>
                 <a 
-                  href="/attached_assets/Yash_Kabra_QA_Engineer.pdf" 
-                  download
-                  className="inline-block px-6 py-3 bg-background text-foreground border border-input font-medium rounded-lg hover:bg-muted transition-colors"
+                  href="https://github.com/yashkabra143" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-slate-700 to-slate-900 dark:from-slate-600 dark:to-slate-800 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-slate-900/50 transition-all duration-300 group hover:-translate-y-1"
+                  aria-label="GitHub Profile"
                 >
-                  Download Resume
+                  <Github size={18} className="group-hover:scale-110 transition-transform" /> 
+                  <span>GitHub</span>
+                </a>
+                <a 
+                  href="https://www.upwork.com/freelancers/~01125d841102f61285" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-green-500/80 to-emerald-600/80 dark:from-green-500 dark:to-emerald-600 text-white font-medium rounded-lg hover:shadow-lg hover:shadow-green-500/50 transition-all duration-300 group hover:-translate-y-1"
+                  aria-label="Upwork Profile"
+                >
+                  <Briefcase size={18} className="group-hover:scale-110 transition-transform" /> 
+                  <span>Upwork</span>
                 </a>
               </div>
+            </motion.div>
+
+            {/* About Section */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.55, duration: 0.6 }}
+              className="mb-8"
+            >
+              <h2 className="text-2xl font-bold text-foreground mb-4">About Me</h2>
+              <p className="text-muted-foreground dark:text-slate-300 leading-relaxed text-lg" itemProp="description">
+                {profileData.about}
+              </p>
+            </motion.div>
+
+            {/* CTA Buttons */}
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6, duration: 0.6 }}
+              className="flex flex-wrap gap-4"
+            >
+              <a 
+                href="#contact" 
+                className="inline-flex items-center gap-2 px-7 py-3 bg-gradient-to-r from-primary to-blue-600 dark:from-primary dark:to-blue-400 text-white font-semibold rounded-lg shadow-lg hover:shadow-xl hover:shadow-primary/50 transition-all duration-300 group hover:-translate-y-1 hover:scale-105"
+                onClick={(e) => {
+                  e.preventDefault();
+                  document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }}
+              >
+                Contact Me
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
+              <a 
+                href="/attached_assets/Yash_Kabra_QA_Engineer.pdf" 
+                download
+                className="inline-flex items-center gap-2 px-7 py-3 bg-white dark:bg-slate-800 text-foreground border-2 border-primary dark:border-primary font-semibold rounded-lg hover:bg-primary/5 dark:hover:bg-primary/20 transition-all duration-300 group hover:-translate-y-1 hover:shadow-lg hover:shadow-primary/30"
+              >
+                Download Resume
+                <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </a>
             </motion.div>
           </div>
         </motion.div>

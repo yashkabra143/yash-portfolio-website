@@ -57,14 +57,17 @@ export default function ResourcesSection() {
   };
 
   return (
-    <section id="resources" className="py-16 bg-background dark:bg-background">
+    <section id="resources" className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-4 text-foreground"
+          className="text-4xl font-bold text-center mb-4 text-foreground"
         >
           QA Resources
         </motion.h2>
@@ -87,7 +90,7 @@ export default function ResourcesSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * resource.id }}
-              className="bg-card dark:bg-slate-800 rounded-xl shadow-md p-6 border border-border/40 dark:border-slate-700/40 transition-all duration-300 hover:shadow-lg flex flex-col justify-between h-full"
+              className="glass-effect rounded-2xl shadow-lg p-7 border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 flex flex-col justify-between h-full group"
             >
               <div>
                 <div className="flex justify-between items-start mb-4">

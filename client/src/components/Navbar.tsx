@@ -50,10 +50,10 @@ export default function Navbar() {
   }, [isMenuOpen]);
 
   return (
-    <header className="sticky top-0 z-50 bg-background shadow-sm dark:shadow-slate-700/20">
+    <header className="sticky top-0 z-50 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md shadow-md dark:shadow-primary/10 border-b border-primary/10 dark:border-primary/20">
       <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-        <a href="#" className="text-2xl font-bold font-poppins text-foreground">
-          <span className="text-primary">YK</span>
+        <a href="#" className="text-2xl font-bold font-poppins text-gradient hover:scale-110 transition-transform duration-300">
+          YK
         </a>
         <div className="hidden md:flex items-center space-x-8">
           <nav className="flex space-x-8">
@@ -61,8 +61,8 @@ export default function Navbar() {
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className={`nav-link text-foreground hover:text-primary font-medium transition-colors ${
-                  activeSection === link.href.substring(1) ? "active" : ""
+                className={`nav-link text-foreground dark:text-slate-200 hover:text-primary dark:hover:text-accent font-semibold transition-colors duration-300 ${
+                  activeSection === link.href.substring(1) ? "active text-primary dark:text-accent" : ""
                 }`}
               >
                 {link.label}
@@ -90,7 +90,7 @@ export default function Navbar() {
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="px-6 py-4 bg-background md:hidden overflow-hidden dark:border-t dark:border-slate-700/30"
+            className="px-6 py-4 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md md:hidden overflow-hidden border-t border-primary/10 dark:border-primary/20"
           >
             <nav className="flex flex-col space-y-4">
               {navLinks.map((link) => (

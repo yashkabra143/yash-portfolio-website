@@ -20,14 +20,17 @@ export default function SkillsSection() {
   };
 
   return (
-    <section id="skills" className="py-16 bg-background">
+    <section id="skills" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-12 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Technical Skills
         </motion.h2>
@@ -46,15 +49,15 @@ export default function SkillsSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
           {skillsData.map((skill, index) => (
-            <motion.div 
+            <motion.div
               key={index}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-muted dark:bg-slate-800 rounded-xl p-6 shadow-sm"
+              className="glass-effect rounded-2xl p-7 shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group"
             >
-              <div className="w-12 h-12 rounded-lg bg-primary/10 dark:bg-primary/20 flex items-center justify-center mb-4">
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 dark:from-primary/40 dark:to-accent/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 {skillIcons[skill.category as keyof typeof skillIcons]}
               </div>
               <h3 className="text-xl font-semibold mb-4 text-foreground">{skill.category}</h3>
@@ -69,13 +72,13 @@ export default function SkillsSection() {
                         {item.proficiency}%
                       </span>
                     </div>
-                    <div className="relative h-2 w-full overflow-hidden rounded-full bg-background dark:bg-slate-700">
-                      <motion.div 
+                    <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-700 dark:to-slate-600">
+                      <motion.div
                         initial={{ width: 0 }}
                         whileInView={{ width: `${item.proficiency}%` }}
                         viewport={{ once: true }}
                         transition={{ duration: 1, delay: idx * 0.1 }}
-                        className="h-full bg-primary rounded-full"
+                        className="h-full bg-gradient-to-r from-primary via-blue-500 to-accent rounded-full shadow-lg shadow-primary/50"
                       />
                     </div>
                   </div>

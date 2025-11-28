@@ -4,14 +4,17 @@ import { Award, Calendar } from "lucide-react";
 
 export default function CertificationsSection() {
   return (
-    <section id="certifications" className="py-16 bg-muted dark:bg-slate-900">
+    <section id="certifications" className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-4 text-foreground"
+          className="text-4xl font-bold text-center mb-4 text-foreground"
         >
           Certifications
         </motion.h2>
@@ -34,11 +37,11 @@ export default function CertificationsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.1 * index }}
-              className="bg-card dark:bg-slate-800 rounded-xl shadow-md overflow-hidden border border-border/40 dark:border-slate-700/40 transition-all duration-300 hover:shadow-lg group"
+              className="glass-effect rounded-2xl shadow-lg overflow-hidden border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 hover:shadow-xl hover:shadow-primary/20 group"
             >
               <div className="p-6">
                 <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center text-primary mr-4 flex-shrink-0 group-hover:bg-primary/30 transition-colors">
+                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 dark:from-primary/40 dark:to-accent/30 flex items-center justify-center text-primary mr-4 flex-shrink-0 group-hover:scale-110 transition-all duration-300">
                     <Award size={24} />
                   </div>
                   <div>

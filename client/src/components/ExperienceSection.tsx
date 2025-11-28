@@ -20,14 +20,17 @@ export default function ExperienceSection() {
   const earlierExp = experienceData.find(exp => exp.type === "earlier");
   
   return (
-    <section id="experience" className="py-16 bg-muted dark:bg-slate-900">
+    <section id="experience" className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-8 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Professional Experience
         </motion.h2>
@@ -55,9 +58,9 @@ export default function ExperienceSection() {
                     damping: 15
                   }}
                 >
-                  <AccordionItem 
+                  <AccordionItem
                     value={exp.company || `experience-${index}`}
-                    className="bg-card dark:bg-slate-800 rounded-xl shadow-md border border-border/40 dark:border-slate-700/40 overflow-hidden group"
+                    className="glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 overflow-hidden group hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
                   >
                     <motion.div
                       whileHover={{ 
@@ -65,7 +68,7 @@ export default function ExperienceSection() {
                       }}
                       transition={{ duration: 0.2 }}
                     >
-                      <AccordionTrigger className="px-6 py-4 hover:bg-muted/50 dark:hover:bg-slate-700/20 data-[state=open]:bg-primary/10 dark:data-[state=open]:bg-primary/20 border-b border-border/30 dark:border-slate-700/30 transition-all group">
+                      <AccordionTrigger className="px-6 py-4 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/15 dark:hover:to-accent/15 data-[state=open]:bg-gradient-to-r data-[state=open]:from-primary/20 data-[state=open]:to-accent/20 dark:data-[state=open]:from-primary/30 dark:data-[state=open]:to-accent/30 border-b border-primary/10 dark:border-primary/20 transition-all duration-300 group">
                         <div className="flex flex-col md:flex-row md:items-center justify-between w-full gap-2 text-left">
                           <div className="flex items-center gap-2">
                             <motion.div
@@ -154,9 +157,9 @@ export default function ExperienceSection() {
                   stiffness: 50
                 }}
               >
-                <AccordionItem 
+                <AccordionItem
                   value="earlier"
-                  className="bg-card dark:bg-slate-800 rounded-xl shadow-md border border-border/40 dark:border-slate-700/40 overflow-hidden"
+                  className="glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 overflow-hidden hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
                 >
                   <motion.div
                     whileHover={{ 
@@ -164,7 +167,7 @@ export default function ExperienceSection() {
                     }}
                     transition={{ duration: 0.2 }}
                   >
-                    <AccordionTrigger className="px-6 py-4 hover:bg-muted/50 dark:hover:bg-slate-700/20 data-[state=open]:bg-primary/10 dark:data-[state=open]:bg-primary/20 border-b border-border/30 dark:border-slate-700/30 transition-all group">
+                    <AccordionTrigger className="px-6 py-4 hover:bg-gradient-to-r hover:from-primary/10 hover:to-accent/10 dark:hover:from-primary/15 dark:hover:to-accent/15 data-[state=open]:bg-gradient-to-r data-[state=open]:from-primary/20 data-[state=open]:to-accent/20 dark:data-[state=open]:from-primary/30 dark:data-[state=open]:to-accent/30 border-b border-primary/10 dark:border-primary/20 transition-all duration-300 group">
                       <div className="flex items-center gap-2 w-full text-left">
                         <motion.div
                           initial={{ rotate: 0 }}
@@ -205,7 +208,7 @@ export default function ExperienceSection() {
                               boxShadow: "0 10px 20px rgba(0, 0, 0, 0.1)",
                               borderColor: "rgba(66, 153, 225, 0.5)"
                             }}
-                            className="bg-muted/50 dark:bg-slate-900/50 rounded-lg p-4 border border-border/20 dark:border-slate-700/20 transition-all duration-300"
+                            className="glass-effect rounded-xl p-5 border-2 border-gradient-to-br from-primary/30 to-accent/20 dark:border-gradient-to-br dark:from-primary/40 dark:to-accent/30 transition-all duration-300"
                           >
                             <h4 className="text-base font-semibold mb-2 text-foreground">{position.title}</h4>
                             <div className="flex items-center gap-2 text-sm text-primary mb-2">

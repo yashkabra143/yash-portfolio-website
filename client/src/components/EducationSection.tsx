@@ -9,28 +9,31 @@ const education = {
 
 export default function EducationSection() {
   return (
-    <section className="py-16 bg-background">
+    <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
       <div className="container mx-auto px-6">
-        <motion.h2 
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-12 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Education
         </motion.h2>
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-3xl mx-auto bg-muted dark:bg-slate-800 rounded-xl shadow-sm p-6"
+          className="max-w-3xl mx-auto glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 p-8 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
         >
-          <div className="flex flex-col md:flex-row md:items-center">
-            <div className="md:w-1/4 mb-4 md:mb-0">
-              <div className="w-16 h-16 rounded-lg bg-sky-100 dark:bg-sky-900 flex items-center justify-center mb-3">
-                <GraduationCap className="text-2xl text-primary" size={28} />
+          <div className="flex flex-col md:flex-row md:items-center gap-6">
+            <div className="md:w-1/4">
+              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 dark:from-primary/30 dark:to-accent/30 flex items-center justify-center mb-3 shadow-lg">
+                <GraduationCap className="text-primary text-2xl" size={32} />
               </div>
             </div>
             <div className="md:w-3/4">

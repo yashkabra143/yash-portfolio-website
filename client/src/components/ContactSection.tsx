@@ -64,14 +64,21 @@ export default function ContactSection() {
   }
 
   return (
-    <section id="contact" className="py-16 bg-background">
-      <div className="container mx-auto px-6">
-        <motion.h2 
+    <section id="contact" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 relative overflow-hidden">
+      {/* Background gradient blobs */}
+      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"></div>
+      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-t from-accent/10 to-primary/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 relative z-10">
+        {/* Section divider */}
+        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
+
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-3xl font-bold font-poppins text-center mb-12 text-foreground"
+          className="text-4xl font-bold text-center mb-12 text-foreground"
         >
           Get In Touch
         </motion.h2>
@@ -88,9 +95,9 @@ export default function ContactSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="bg-muted dark:bg-slate-800 rounded-xl p-6 text-center shadow-sm"
+              className="glass-effect rounded-2xl p-8 text-center shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group"
             >
-              <div className="w-16 h-16 rounded-full bg-primary mx-auto flex items-center justify-center mb-4">
+              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mx-auto flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
               <h3 className="text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
@@ -105,12 +112,12 @@ export default function ContactSection() {
           ))}
         </div>
         
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-2xl mx-auto mt-12 bg-muted dark:bg-slate-800 rounded-xl shadow-sm p-8"
+          className="max-w-2xl mx-auto mt-12 glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 p-9 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
         >
           <h3 className="text-2xl font-semibold mb-6 text-center text-foreground">Send Me a Message</h3>
           <Form {...form}>
@@ -187,10 +194,10 @@ export default function ContactSection() {
                   </FormItem>
                 )}
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary/90 transition-colors font-medium"
+                className="w-full bg-gradient-to-r from-primary to-blue-600 dark:from-primary dark:to-blue-400 text-white py-3 rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 font-semibold disabled:opacity-50 hover:-translate-y-1"
               >
                 {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
