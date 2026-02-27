@@ -5,6 +5,7 @@ import { useState, useEffect, Suspense } from "react";
 import { Select, SelectTrigger, SelectValue, SelectContent, SelectItem } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import ProjectsAnimation from "./ProjectsAnimation";
+import TiltCard from "./TiltCard";
 
 export default function ProjectsSection() {
   const projectIcons = {
@@ -213,17 +214,17 @@ export default function ProjectsSection() {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {filteredProjects.map((project, index) => (
-            <motion.div 
+            <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              whileHover={{ 
-                y: -8, 
-                boxShadow: "0 10px 25px rgba(0, 0, 0, 0.1)" 
-              }}
-              className="project-card glass-effect rounded-2xl overflow-hidden shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 transition-all duration-300 group"
+            >
+            <TiltCard
+              className="project-card glass-effect rounded-2xl overflow-hidden shadow-lg border border-primary/20 transition-all duration-300 group h-full"
+              glowColor="rgba(116,185,255,0.35)"
+              intensity={10}
             >
               <motion.div
                 className="h-48 bg-gradient-to-br from-primary via-blue-500 to-accent flex items-center justify-center group-hover:shadow-inner transition-all duration-300"
@@ -263,6 +264,7 @@ export default function ProjectsSection() {
                   </div>
                 </div>
               </div>
+            </TiltCard>
             </motion.div>
           ))}
         </div>

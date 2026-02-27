@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { Code, Bot, ExternalLink, Cog, Cloud, Database } from "lucide-react";
 import { skillsData } from "@/lib/data";
 import SkillsAnimation from "./SkillsAnimation";
+import TiltCard from "./TiltCard";
 import { Suspense } from "react";
 
 type SkillItem = {
@@ -51,11 +52,16 @@ export default function SkillsSection() {
           {skillsData.map((skill, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              initial={{ opacity: 0, rotateY: -25, y: 30 }}
+              whileInView={{ opacity: 1, rotateY: 0, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-effect rounded-2xl p-7 shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group"
+              transition={{ duration: 0.6, delay: index * 0.12, type: "spring", stiffness: 80 }}
+              style={{ perspective: 1000 }}
+            >
+            <TiltCard
+              className="glass-effect rounded-2xl p-7 shadow-lg border border-primary/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group h-full"
+              glowColor="rgba(99,102,241,0.35)"
+              intensity={8}
             >
               <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 dark:from-primary/40 dark:to-accent/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                 {skillIcons[skill.category as keyof typeof skillIcons]}
@@ -84,6 +90,7 @@ export default function SkillsSection() {
                   </div>
                 ))}
               </div>
+            </TiltCard>
             </motion.div>
           ))}
         </div>
