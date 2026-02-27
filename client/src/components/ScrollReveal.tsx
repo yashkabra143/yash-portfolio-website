@@ -21,15 +21,15 @@ export default function ScrollReveal({
   const ref = useRef(null);
   const isInView = useInView(ref, { 
     once,
-    margin: "-100px",
-    amount: 0.3
+    margin: "0px 0px -50px 0px", // Trigger earlier, only 50px before entering viewport
+    amount: 0.1 // Trigger when just 10% is visible
   });
 
   const variants = {
     hidden: {
       opacity: 0,
-      y: direction === "up" ? 40 : direction === "down" ? -40 : 0,
-      x: direction === "left" ? 40 : direction === "right" ? -40 : 0,
+      y: direction === "up" ? 30 : direction === "down" ? -30 : 0,
+      x: direction === "left" ? 30 : direction === "right" ? -30 : 0,
     },
     visible: {
       opacity: 1,
