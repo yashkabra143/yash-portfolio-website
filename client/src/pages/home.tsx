@@ -8,6 +8,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ResourcesSection from "@/components/ResourcesSection";
 import ContactSection from "@/components/ContactSection";
+import ScrollReveal from "@/components/ScrollReveal";
 
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import SkipToContent from "@/components/SkipToContent";
@@ -50,14 +51,30 @@ export default function Home() {
       <AnalyticsTracker />
       <main id="main" aria-label="Main content">
         <HeroSection />
-        <EducationSection />
-        <ExperienceSection />
-        <CertificationsSection />
-        <SkillsSection />
-        <ProjectsSection />
-        <ResourcesSection />
-        <TestimonialsSection />
-        <ContactSection />
+        <ScrollReveal delay={0.1}>
+          <EducationSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <ExperienceSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <CertificationsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <SkillsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <ProjectsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <ResourcesSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <TestimonialsSection />
+        </ScrollReveal>
+        <ScrollReveal delay={0.1}>
+          <ContactSection />
+        </ScrollReveal>
       </main>
       <Footer />
       <ChatBot />

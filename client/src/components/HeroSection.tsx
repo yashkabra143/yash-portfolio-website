@@ -24,10 +24,43 @@ export default function HeroSection() {
       {/* Animated gradient background */}
       <div className="absolute inset-0 bg-gradient-to-br from-slate-50 via-blue-50 to-cyan-50 dark:from-slate-900 dark:via-blue-950 dark:to-slate-900 pointer-events-none"></div>
       
-      {/* Floating gradient blobs */}
-      <div className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl opacity-50 dark:opacity-30 pointer-events-none animate-pulse"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-t from-accent/20 to-primary/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none animate-pulse"></div>
-      <div className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl opacity-30 dark:opacity-15 pointer-events-none"></div>
+      {/* Floating gradient blobs with enhanced animations */}
+      <motion.div 
+        className="absolute top-10 right-10 w-96 h-96 bg-gradient-to-r from-primary/20 to-accent/20 rounded-full blur-3xl opacity-50 dark:opacity-30 pointer-events-none"
+        animate={{
+          y: [0, -30, 0],
+          scale: [1, 1.1, 1],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-t from-accent/20 to-primary/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"
+        animate={{
+          y: [0, 40, 0],
+          scale: [1, 1.15, 1],
+        }}
+        transition={{
+          duration: 10,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      <motion.div 
+        className="absolute top-1/2 left-1/3 w-64 h-64 bg-gradient-to-br from-blue-400/10 to-cyan-400/10 rounded-full blur-2xl opacity-30 dark:opacity-15 pointer-events-none"
+        animate={{
+          x: [0, 50, 0],
+          y: [0, -25, 0],
+        }}
+        transition={{
+          duration: 12,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
 
       <div className="container mx-auto px-6 relative z-10">
         <motion.div 
