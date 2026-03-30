@@ -232,7 +232,7 @@ export const projectsData = [
     testingType: ["Functional", "Manual", "Usability", "Automation"],
     icon: "baby",
     url: "https://www.firstcry.com/",
-    image: "https://api.microlink.io/?url=https%3A%2F%2Fwww.firstcry.com&screenshot=true&meta=false&embed=screenshot.url"
+    image: "/attached_assets/firstcry-screenshot.png"
   },
   {
     name: "DrDenese",
