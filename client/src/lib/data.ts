@@ -117,54 +117,134 @@ export const skillsData = [
 // Projects Data
 export const projectsData = [
   {
-    name: "Yadara.com",
-    domain: "Ticketing System",
-    description: "Developed Yadara LLC, an innovative ticketing system, facilitating seamless ticket transactions for users to purchase event tickets while enabling sellers to effortlessly sell tickets.",
-    technologies: ["Selenium TestNG", "QA Automation", "Java"],
+    name: "SunSirius Care",
+    domain: "Healthcare & EVV",
+    description: "All-in-one mobile app for respite providers, caregivers, and healthcare agencies to manage shifts, billing, and electronic visit verification (EVV). Streamlines administrative tasks with real-time tracking, allowing caregivers to focus on patient care.",
+    technologies: ["Slack", "Jira", "Testflight", "Google Drive", "Lightshot"],
+    category: "Mobile Application",
+    industry: "Healthcare",
+    testingType: ["Functional", "Manual", "Usability"],
+    icon: "sirius",
+    url: "https://play.google.com/store/apps/details?id=com.app.sun_sirius",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dcom.app.sun_sirius&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "Computesphere",
+    domain: "Cloud Management",
+    description: "Designed and implemented an automated testing framework for Computesphere, optimizing cloud infrastructure testing. Integrated CI/CD pipelines (Jenkins, GitHub Actions) for seamless execution, improving release efficiency by 30%.",
+    technologies: ["Python", "Selenium", "PyTest", "Behave", "Jenkins", "GitHub Actions"],
+    category: "Cloud Infrastructure",
+    industry: "Technology & Cloud Computing",
+    testingType: ["Automation", "API", "Integration"],
+    icon: "cloud",
+    url: "https://computesphere.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fcomputesphere.com&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "WordBop",
+    domain: "Mobile Word Game",
+    description: "Daily word puzzle game for Android and iOS that challenges players with boggle-style, scrabble-style, and crossword mechanics. Features daily challenges, streak rewards, hidden stickers, themed puzzles, and rotating two-week themes.",
+    technologies: ["Teams", "JIRA"],
+    category: "Mobile Application",
+    industry: "Gaming & Entertainment",
+    testingType: ["Functional", "Manual", "Usability"],
+    icon: "wordbop",
+    url: "https://apps.apple.com/us/app/wordbop-daily-word-puzzles/id6443813370",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Fwordbop-daily-word-puzzles%2Fid6443813370&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "PotionPop",
+    domain: "Mobile Match-3 Game",
+    description: "Match-3 adventure set in a whimsical wizarding world with hundreds of handcrafted levels. Features special bonuses, magic amulets, cursed tiles, and daily spins. Available on Android and iOS.",
+    technologies: ["Teams", "JIRA", "Lightshot", "ScreenRecorder"],
+    category: "Mobile Application",
+    industry: "Gaming & Entertainment",
+    testingType: ["Functional", "Manual", "Usability"],
+    icon: "potionpop",
+    url: "https://apps.apple.com/us/app/potion-pop-match3/id6744935331",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fapps.apple.com%2Fus%2Fapp%2Fpotion-pop-match3%2Fid6744935331&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "Syncuppro",
+    domain: "Compliance Management",
+    description: "Web platform connecting compliance project managers with organisations. Enables compliance experts to discover flexible jobs, lead teams, and manage large-scale compliance projects across industries.",
+    technologies: ["Teams", "JIRA"],
     category: "Web Application",
-    industry: "Events & Entertainment",
-    testingType: ["Functional", "Automation"],
-    icon: "ticket"
+    industry: "Compliance & Legal",
+    testingType: ["Manual", "Functional", "Usability"],
+    icon: "compliance",
+    url: "https://www.syncuppro.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fwww.syncuppro.com&screenshot=true&meta=false&embed=screenshot.url"
   },
   {
-    name: "FirstCry.com",
-    domain: "E-commerce and Parenting",
-    description: "Managed e-commerce operations for FirstCry, facilitating seamless online transactions of baby products while overseeing the parenting domain for a comprehensive customer experience.",
-    technologies: ["Manual Testing", "Automation", "Usability", "Selenium"],
-    category: "E-commerce Platform",
-    industry: "Retail & Consumer Goods",
-    testingType: ["Functional", "Usability", "Automation"],
-    icon: "baby"
-  },
-  {
-    name: "DrDenese",
-    domain: "E-commerce Web Application",
-    description: "Developed an e-commerce platform for a skincare website, enabling seamless product purchases and implementing a subscription system for personalized skincare regimens.",
-    technologies: ["BDD", "Cucumber", "Specflow", "C#"],
+    name: "Gently Radiant",
+    domain: "E-commerce Skincare",
+    description: "Led end-to-end testing for an e-commerce platform specialising in skincare products. Conducted rigorous manual and automation testing to ensure a seamless user experience across web and mobile platforms.",
+    technologies: ["Teams", "Jira", "Figma", "Outlook"],
     category: "E-commerce Platform",
     industry: "Health & Beauty",
-    testingType: ["BDD", "Automation"],
-    icon: "skincare"
+    testingType: ["Functional", "Manual", "Automation", "Usability"],
+    icon: "radiant",
+    url: "https://gentlyradiantskin.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fgentlyradiantskin.com&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "Calen360",
+    domain: "Calendar Sync",
+    description: "Web App and PWA that allows users to sync their calendars with minimal effort, eliminating the need to manually transfer calendar data across platforms.",
+    technologies: ["Teams", "JIRA", "Figma"],
+    category: "Web Application",
+    industry: "Productivity & SaaS",
+    testingType: ["Functional", "Manual", "Usability"],
+    icon: "calendar",
+    url: "https://www.calen360.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fwww.calen360.com&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "Yadara.com",
+    domain: "Ticketing System",
+    description: "Innovative ticketing platform facilitating seamless ticket transactions for users to purchase event tickets while enabling sellers to effortlessly list and sell tickets. Achieved 20% enhancement in software reliability.",
+    technologies: ["Python", "Selenium", "Requests", "JIRA"],
+    category: "Web Application",
+    industry: "Events & Entertainment",
+    testingType: ["Functional", "Automation", "API"],
+    icon: "ticket",
+    url: "https://yadara.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fyadara.com&screenshot=true&meta=false&embed=screenshot.url"
   },
   {
     name: "Smart Asset Manager",
-    domain: "Cryptocurrency",
-    description: "Developed the SAM app, a cryptocurrency exchange platform that enables users to securely buy and sell digital assets with ease.",
-    technologies: ["Blockchain", "Manual Testing", "Performance", "API Testing"],
+    domain: "Cryptocurrency Exchange",
+    description: "Cryptocurrency exchange platform (Android & iOS) enabling users to securely buy and sell digital assets. Comprehensive testing covered functional, performance, and security aspects of blockchain transactions.",
+    technologies: ["Mantis", "Blockchain", "Gsheet", "Skype", "Lightshot"],
     category: "Finance Application",
     industry: "FinTech & Cryptocurrency",
     testingType: ["Functional", "Performance", "Security"],
     icon: "crypto"
   },
   {
-    name: "Computesphere",
-    domain: "Cloud Management",
-    description: "Designed and implemented an automated testing framework for Computesphere, optimizing cloud infrastructure testing with CI/CD pipelines for seamless execution.",
-    technologies: ["Python", "Selenium", "Jenkins", "CI/CD", "PyTest"],
-    category: "Cloud Infrastructure",
-    industry: "Technology & Cloud Computing",
-    testingType: ["Automation", "API", "Integration"],
-    icon: "cloud"
+    name: "FirstCry.com",
+    domain: "E-commerce & Parenting",
+    description: "Managed quality assurance for FirstCry's e-commerce platform, facilitating seamless online transactions of baby products. Automation reduced testing effort by 40% and resulted in a 15% boost in user satisfaction.",
+    technologies: ["Redmine", "SmartWork", "Teams", "FortiClient VPN", "Python", "Selenium"],
+    category: "E-commerce Platform",
+    industry: "Retail & Consumer Goods",
+    testingType: ["Functional", "Manual", "Usability", "Automation"],
+    icon: "baby",
+    url: "https://www.firstcry.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fwww.firstcry.com&screenshot=true&meta=false&embed=screenshot.url"
+  },
+  {
+    name: "DrDenese",
+    domain: "E-commerce Skincare",
+    description: "E-commerce platform for a premium skincare brand enabling seamless product purchases and a subscription system for personalised skincare regimens. Implemented BDD automation with C#, Cucumber, and SpecFlow.",
+    technologies: ["C#", "BDD", "Cucumber", "SpecFlow", "TestNG", "Redmine"],
+    category: "E-commerce Platform",
+    industry: "Health & Beauty",
+    testingType: ["BDD", "Automation", "Performance", "Functional"],
+    icon: "skincare",
+    url: "https://drdenese.com/",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fdrdenese.com&screenshot=true&meta=false&embed=screenshot.url"
   }
 ];
 
@@ -173,27 +253,33 @@ export const projectFilters = {
   category: [
     "All Categories",
     "Web Application",
+    "Mobile Application",
     "E-commerce Platform",
     "Finance Application",
     "Cloud Infrastructure"
   ],
   industry: [
     "All Industries",
-    "Events & Entertainment",
-    "Retail & Consumer Goods",
+    "Healthcare",
+    "Technology & Cloud Computing",
+    "Gaming & Entertainment",
+    "Compliance & Legal",
     "Health & Beauty",
+    "Productivity & SaaS",
+    "Events & Entertainment",
     "FinTech & Cryptocurrency",
-    "Technology & Cloud Computing"
+    "Retail & Consumer Goods"
   ],
   testingType: [
     "All Testing Types",
     "Functional",
-    "Automation", 
+    "Manual",
+    "Automation",
+    "API",
     "Performance",
     "Security",
     "Usability",
     "BDD",
-    "API", 
     "Integration"
   ]
 };
@@ -233,18 +319,20 @@ export const testimonialsData = [
 export const certificationsData = [
   {
     id: 1,
-    name: "Manual Testing Certification",
+    title: "Manual Testing Certification",
     issuer: "International Software Testing Qualifications Board (ISTQB)",
     date: "May 2018",
-    description: "Foundation Level certification in software testing methodologies, principles, and practices.",
-    icon: "certificate"
+    credentialId: "ISTQB-FL-2018-YK",
+    skills: ["Manual Testing", "Test Planning", "Bug Reporting", "ISTQB"],
+    status: "active" as const,
   },
   {
     id: 2,
-    name: "Automation Testing Certification",
+    title: "Automation Testing Certification",
     issuer: "Selenium WebDriver with Python",
     date: "August 2020",
-    description: "Advanced certification in automated testing using Selenium WebDriver with Python, including test framework design and CI/CD integration.",
-    icon: "certificate"
-  }
+    credentialId: "SEL-PY-2020-YK",
+    skills: ["Selenium", "Python", "Test Automation", "WebDriver", "PyTest"],
+    status: "active" as const,
+  },
 ];

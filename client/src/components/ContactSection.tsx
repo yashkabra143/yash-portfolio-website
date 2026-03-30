@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle } from "lucide-react";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { apiRequest } from "@/lib/queryClient";
 import { useMutation } from "@tanstack/react-query";
-import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 
 const formSchema = z.object({
@@ -21,18 +21,33 @@ const formSchema = z.object({
 
 type FormValues = z.infer<typeof formSchema>;
 
+const CONTACT_INFO = [
+  {
+    icon: <Mail className="w-5 h-5" />,
+    label: "Email",
+    value: "yashkabra143@gmail.com",
+    href: "mailto:yashkabra143@gmail.com",
+  },
+  {
+    icon: <Phone className="w-5 h-5" />,
+    label: "Phone",
+    value: "+91 8370043219",
+    href: "tel:+918370043219",
+  },
+  {
+    icon: <MapPin className="w-5 h-5" />,
+    label: "Location",
+    value: "Dallas, TX, USA",
+    href: undefined,
+  },
+];
+
 export default function ContactSection() {
   const { toast } = useToast();
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  
+
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-    },
+    defaultValues: { name: "", email: "", subject: "", message: "" },
   });
 
   const contactMutation = useMutation({
@@ -42,7 +57,7 @@ export default function ContactSection() {
     onSuccess: () => {
       toast({
         title: "Message sent successfully!",
-        description: "Thank you for your message. We'll get back to you soon.",
+        description: "Thank you for reaching out. I'll get back to you soon.",
       });
       form.reset();
     },
@@ -53,157 +68,250 @@ export default function ContactSection() {
         variant: "destructive",
       });
     },
-    onSettled: () => {
-      setIsSubmitting(false);
-    }
   });
 
   function onSubmit(data: FormValues) {
-    setIsSubmitting(true);
     contactMutation.mutate(data);
   }
 
+  const isSubmitting = contactMutation.isPending;
+  const isSuccess = contactMutation.isSuccess;
+  const isError = contactMutation.isError;
+
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900 relative overflow-hidden">
-      {/* Background gradient blobs */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-r from-primary/10 to-accent/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-t from-accent/10 to-primary/10 rounded-full blur-3xl opacity-40 dark:opacity-20 pointer-events-none"></div>
+    <section id="contact" className="bg-background py-10 relative overflow-hidden">
+      {/* Ambient blobs */}
+      <div className="pointer-events-none absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl opacity-30" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-80 h-80 bg-primary/10 rounded-full blur-3xl opacity-30" />
 
-      <div className="container mx-auto px-6 relative z-10">
-        {/* Section divider */}
-        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12 text-foreground"
-        >
-          Get In Touch
-        </motion.h2>
-        
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {[
-            { icon: <Mail className="text-xl text-white" size={24} />, title: "Email", info: "yashkabra143@gmail.com", link: "mailto:yashkabra143@gmail.com" },
-            { icon: <Phone className="text-xl text-white" size={24} />, title: "Phone", info: "+91 8370043219", link: "tel:+918370043219" },
-            { icon: <MapPin className="text-xl text-white" size={24} />, title: "Location", info: "Indore, Madhya Pradesh, India", link: "" }
-          ].map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="glass-effect rounded-2xl p-8 text-center shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group"
-            >
-              <div className="w-16 h-16 rounded-full bg-gradient-to-br from-primary to-accent mx-auto flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300">
-                {item.icon}
-              </div>
-              <h3 className="text-xl font-semibold mb-2 text-foreground">{item.title}</h3>
-              {item.link ? (
-                <a href={item.link} className="text-primary hover:underline">
-                  {item.info}
-                </a>
-              ) : (
-                <p className="text-muted-foreground dark:text-slate-400">{item.info}</p>
-              )}
-            </motion.div>
-          ))}
-        </div>
-        
+      <div className="container mx-auto px-4 sm:px-6 relative z-10">
+        {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="max-w-2xl mx-auto mt-12 glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 p-9 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12 space-y-4"
         >
-          <h3 className="text-2xl font-semibold mb-6 text-center text-foreground">Send Me a Message</h3>
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <FormField
-                  control={form.control}
-                  name="name"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Name</FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder="Your name" 
-                          {...field} 
-                          className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-                <FormField
-                  control={form.control}
-                  name="email"
-                  render={({ field }) => (
-                    <FormItem>
-                      <FormLabel className="text-foreground">Email</FormLabel>
-                      <FormControl>
-                        <Input 
-                          placeholder="Your email" 
-                          type="email" 
-                          {...field} 
-                          className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
-                />
-              </div>
-              <FormField
-                control={form.control}
-                name="subject"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-foreground">Subject</FormLabel>
-                    <FormControl>
-                      <Input 
-                        placeholder="Subject of your message" 
-                        {...field} 
-                        className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <FormField
-                control={form.control}
-                name="message"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel className="text-foreground">Message</FormLabel>
-                    <FormControl>
-                      <Textarea 
-                        placeholder="Your message" 
-                        {...field} 
-                        className="w-full px-4 py-2 border border-input rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-background"
-                        rows={5}
-                      />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-              <Button
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-gradient-to-r from-primary to-blue-600 dark:from-primary dark:to-blue-400 text-white py-3 rounded-lg hover:shadow-lg hover:shadow-primary/50 transition-all duration-300 font-semibold disabled:opacity-50 hover:-translate-y-1"
-              >
-                {isSubmitting ? "Sending..." : "Send Message"}
-              </Button>
-            </form>
-          </Form>
+          <div className="h-px w-24 bg-primary mx-auto" />
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground">Get In Touch</h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Have a question or want to work together? Feel free to reach out!
+          </p>
         </motion.div>
+
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-3 gap-8">
+          {/* Left — contact info */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-1 space-y-6"
+          >
+            <Card className="p-6 border-border shadow-lg">
+              <h3 className="text-xl font-semibold text-foreground mb-6">Contact Information</h3>
+              <div className="space-y-4">
+                {CONTACT_INFO.map((info, index) => {
+                  const inner = (
+                    <div className={`flex items-start gap-4 p-4 rounded-lg bg-muted/50 transition-colors ${info.href ? "hover:bg-muted group cursor-pointer" : ""}`}>
+                      <div className="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-colors">
+                        {info.icon}
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <p className="text-xs font-medium text-muted-foreground mb-0.5">{info.label}</p>
+                        <p className="text-sm text-foreground font-medium break-words">{info.value}</p>
+                      </div>
+                    </div>
+                  );
+
+                  return (
+                    <motion.div
+                      key={info.label}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.4, delay: 0.3 + index * 0.1 }}
+                    >
+                      {info.href ? (
+                        <a href={info.href}>{inner}</a>
+                      ) : (
+                        inner
+                      )}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </Card>
+
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: 0.6 }}
+              className="p-6 rounded-xl bg-primary/5 border border-primary/20"
+            >
+              <h4 className="text-sm font-semibold text-foreground mb-1">Response Time</h4>
+              <p className="text-sm text-muted-foreground">
+                I typically respond within 24 hours during business days.
+              </p>
+            </motion.div>
+          </motion.div>
+
+          {/* Right — form */}
+          <motion.div
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="lg:col-span-2"
+          >
+            <Card className="p-8 border-border shadow-lg">
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <div className="grid sm:grid-cols-2 gap-6">
+                    <FormField
+                      control={form.control}
+                      name="name"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Name *</FormLabel>
+                          <FormControl>
+                            <Input placeholder="Yash Kabra" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                    <FormField
+                      control={form.control}
+                      name="email"
+                      render={({ field }) => (
+                        <FormItem>
+                          <FormLabel>Email *</FormLabel>
+                          <FormControl>
+                            <Input type="email" placeholder="you@example.com" {...field} />
+                          </FormControl>
+                          <FormMessage />
+                        </FormItem>
+                      )}
+                    />
+                  </div>
+
+                  <FormField
+                    control={form.control}
+                    name="subject"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Subject *</FormLabel>
+                        <FormControl>
+                          <Input placeholder="How can I help you?" {...field} />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <FormField
+                    control={form.control}
+                    name="message"
+                    render={({ field }) => (
+                      <FormItem>
+                        <FormLabel>Message *</FormLabel>
+                        <FormControl>
+                          <Textarea
+                            placeholder="Tell me more about your inquiry..."
+                            rows={6}
+                            className="resize-none"
+                            {...field}
+                          />
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    )}
+                  />
+
+                  <div className="space-y-3">
+                    <Button
+                      type="submit"
+                      disabled={isSubmitting}
+                      size="lg"
+                      className="w-full sm:w-auto min-w-[200px]"
+                    >
+                      <AnimatePresence mode="wait">
+                        {isSubmitting ? (
+                          <motion.span
+                            key="submitting"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center gap-2"
+                          >
+                            <motion.div
+                              animate={{ rotate: 360 }}
+                              transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                            >
+                              <Send className="w-4 h-4" />
+                            </motion.div>
+                            Sending...
+                          </motion.span>
+                        ) : isSuccess ? (
+                          <motion.span
+                            key="success"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center gap-2"
+                          >
+                            <CheckCircle2 className="w-4 h-4" />
+                            Message Sent!
+                          </motion.span>
+                        ) : isError ? (
+                          <motion.span
+                            key="error"
+                            initial={{ opacity: 0, scale: 0.8 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center gap-2"
+                          >
+                            <AlertCircle className="w-4 h-4" />
+                            Failed to Send
+                          </motion.span>
+                        ) : (
+                          <motion.span
+                            key="idle"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            className="flex items-center gap-2"
+                          >
+                            <Send className="w-4 h-4" />
+                            Send Message
+                          </motion.span>
+                        )}
+                      </AnimatePresence>
+                    </Button>
+
+                    <AnimatePresence>
+                      {isSuccess && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -8 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -8 }}
+                          className="p-4 rounded-lg bg-green-500/10 border border-green-500/20 text-green-700 dark:text-green-400"
+                        >
+                          <p className="text-sm font-medium">
+                            Thank you for your message! I'll get back to you soon.
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                </form>
+              </Form>
+            </Card>
+          </motion.div>
+        </div>
       </div>
     </section>
   );

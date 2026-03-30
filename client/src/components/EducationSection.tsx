@@ -1,46 +1,94 @@
 import { motion } from "framer-motion";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, MapPin, Calendar, Award } from "lucide-react";
 
-const education = {
-  degree: "Bachelor's in Information Technology",
-  institution: "Rajiv Gandhi Proudyogiki Vishwavidyalaya",
-  period: "2013 - 2017"
-};
+interface EducationSectionProps {
+  degree: string;
+  institution: string;
+  location: string;
+  period: string;
+  description?: string;
+  achievements?: string[];
+  variant?: "default" | "minimal";
+}
 
-export default function EducationSection() {
+export default function EducationSection({
+  degree,
+  institution,
+  location,
+  period,
+  achievements,
+  description,
+}: EducationSectionProps) {
   return (
-    <section className="py-20 bg-gradient-to-b from-slate-50 to-white dark:from-slate-900 dark:to-slate-800">
-      <div className="container mx-auto px-6">
-        {/* Section divider */}
-        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12 text-foreground"
-        >
-          Education
-        </motion.h2>
+    <section id="education" className="py-10 bg-background">
+      <div className="container mx-auto px-6 max-w-4xl">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="max-w-3xl mx-auto glass-effect rounded-2xl shadow-lg border-2 border-gradient-to-r from-primary/20 to-accent/20 p-8 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300"
+          transition={{ duration: 0.5 }}
+          className="mb-6 text-center"
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-6">
-            <div className="md:w-1/4">
-              <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-primary/20 to-accent/20 dark:from-primary/30 dark:to-accent/30 flex items-center justify-center mb-3 shadow-lg">
-                <GraduationCap className="text-primary text-2xl" size={32} />
+          <div className="h-px w-24 bg-primary mx-auto mb-8" />
+          <h2 className="text-4xl font-bold text-foreground">Education</h2>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          <div className="relative overflow-hidden rounded-2xl border border-border bg-card p-8 shadow-sm transition-all duration-300 hover:border-primary/30 hover:shadow-md">
+            {/* Left accent stripe */}
+            <div className="absolute left-0 top-0 h-full w-1 bg-primary rounded-r-sm" />
+
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
+              <div className="space-y-2 flex-1">
+                <div className="flex items-center gap-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 shrink-0">
+                    <GraduationCap className="h-5 w-5 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-bold text-foreground leading-tight">{degree}</h3>
+                </div>
+                <p className="pl-[52px] text-base font-medium text-muted-foreground">{institution}</p>
+                {description && (
+                  <p className="pl-[52px] text-sm text-muted-foreground leading-relaxed border-l-2 border-primary/20 ml-[52px] pl-4 mt-3">
+                    {description}
+                  </p>
+                )}
+              </div>
+
+              <div className="flex flex-col gap-2 lg:items-end shrink-0">
+                <div className="flex items-center gap-1.5 font-mono text-sm font-semibold text-primary">
+                  <Calendar className="h-3.5 w-3.5" />
+                  <span>{period}</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-sm text-muted-foreground">
+                  <MapPin className="h-3.5 w-3.5" />
+                  <span>{location}</span>
+                </div>
               </div>
             </div>
-            <div className="md:w-3/4">
-              <h3 className="text-xl font-semibold mb-1 text-foreground">{education.degree}</h3>
-              <p className="text-muted-foreground dark:text-slate-400 mb-2">{education.institution}</p>
-              <p className="text-muted-foreground/80 dark:text-slate-500 mb-3">{education.period}</p>
-            </div>
+
+            {achievements && achievements.length > 0 && (
+              <div className="mt-6 pt-6 border-t border-border">
+                <div className="flex items-center gap-2 mb-3">
+                  <Award className="h-4 w-4 text-primary" />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-primary">
+                    Achievements
+                  </span>
+                </div>
+                <ul className="space-y-2">
+                  {achievements.map((achievement, i) => (
+                    <li key={i} className="flex items-start gap-2.5 text-sm text-muted-foreground">
+                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-primary shrink-0" />
+                      {achievement}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
         </motion.div>
       </div>

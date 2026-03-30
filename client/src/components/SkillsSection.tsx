@@ -1,99 +1,182 @@
 import { motion } from "framer-motion";
-import { Code, Bot, ExternalLink, Cog, Cloud, Database } from "lucide-react";
+import {
+  Code2, Terminal, Globe, Layers, Bot, Server,
+  Cog, GitBranch, Monitor, Database, Zap
+} from "lucide-react";
 import { skillsData } from "@/lib/data";
-import SkillsAnimation from "./SkillsAnimation";
-import TiltCard from "./TiltCard";
-import { Suspense } from "react";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
-type SkillItem = {
-  name: string;
-  proficiency: number;
+// Icon lookup by skill name
+const skillIconMap: Record<string, React.ReactNode> = {
+  Python:           <Terminal className="w-4 h-4" />,
+  Java:             <Code2 className="w-4 h-4" />,
+  JavaScript:       <Globe className="w-4 h-4" />,
+  Selenium:         <Bot className="w-4 h-4" />,
+  PyTest:           <Zap className="w-4 h-4" />,
+  Behave:           <Layers className="w-4 h-4" />,
+  Cucumber:         <Layers className="w-4 h-4" />,
+  TestNG:           <Code2 className="w-4 h-4" />,
+  Postman:          <Zap className="w-4 h-4" />,
+  "REST Assured":   <Server className="w-4 h-4" />,
+  "Python Requests":<Globe className="w-4 h-4" />,
+  Jenkins:          <Cog className="w-4 h-4" />,
+  "GitHub Actions": <GitBranch className="w-4 h-4" />,
+  BrowserStack:     <Monitor className="w-4 h-4" />,
+  LambdaTest:       <Monitor className="w-4 h-4" />,
+  "Sauce Labs":     <Monitor className="w-4 h-4" />,
+  MySQL:            <Database className="w-4 h-4" />,
+  PostgreSQL:       <Database className="w-4 h-4" />,
 };
 
+// Category metadata
+const categoryMeta: Record<string, { description: string; color: string; Icon: React.ElementType }> = {
+  "Programming Languages": {
+    description: "Core scripting languages for automation",
+    color: "from-blue-500 to-cyan-500",
+    Icon: Terminal,
+  },
+  "Automation Frameworks": {
+    description: "End-to-end test automation suites",
+    color: "from-violet-500 to-purple-500",
+    Icon: Bot,
+  },
+  "API Testing": {
+    description: "REST & API validation tools",
+    color: "from-green-500 to-emerald-500",
+    Icon: Server,
+  },
+  "CI/CD & DevOps": {
+    description: "Pipeline automation and deployment",
+    color: "from-orange-500 to-amber-500",
+    Icon: Cog,
+  },
+  "Cloud & Virtualization": {
+    description: "Cross-browser cloud testing platforms",
+    color: "from-sky-500 to-indigo-500",
+    Icon: Monitor,
+  },
+  Database: {
+    description: "Database querying and management",
+    color: "from-rose-500 to-pink-500",
+    Icon: Database,
+  },
+};
+
+const stats = [
+  { value: "8+", label: "Years in QA", color: "text-blue-500", bg: "bg-blue-500/10" },
+  { value: "5+", label: "Companies Served", color: "text-green-500", bg: "bg-green-500/10" },
+  { value: "15+", label: "Technologies Mastered", color: "text-purple-500", bg: "bg-purple-500/10" },
+];
+
 export default function SkillsSection() {
-  const skillIcons = {
-    "Programming Languages": <Code className="text-xl text-primary" />,
-    "Automation Frameworks": <Bot className="text-xl text-primary" />,
-    "API Testing": <ExternalLink className="text-xl text-primary" />,
-    "CI/CD & DevOps": <Cog className="text-xl text-primary" />,
-    "Cloud & Virtualization": <Cloud className="text-xl text-primary" />,
-    "Database": <Database className="text-xl text-primary" />
-  };
-
   return (
-    <section id="skills" className="py-20 bg-gradient-to-b from-white to-slate-50 dark:from-slate-800 dark:to-slate-900">
-      <div className="container mx-auto px-6">
-        {/* Section divider */}
-        <div className="h-1 w-24 bg-gradient-to-r from-primary to-accent rounded-full mx-auto mb-12"></div>
-
-        <motion.h2
+    <section id="skills" className="py-10 bg-gradient-to-b from-muted/20 to-background">
+      <div className="max-w-6xl mx-auto px-6">
+        {/* Header */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-4xl font-bold text-center mb-12 text-foreground"
+          className="text-center mb-12 space-y-3"
         >
-          Technical Skills
-        </motion.h2>
-        
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mb-16"
-        >
-          <Suspense fallback={<div className="h-72 flex items-center justify-center">Loading skills animation...</div>}>
-            <SkillsAnimation />
-          </Suspense>
+          <div className="h-px w-24 bg-primary mx-auto mb-8" />
+          <h2 className="text-4xl font-bold text-foreground">Technical Skills</h2>
+          <p className="text-muted-foreground text-base max-w-2xl mx-auto">
+            A comprehensive overview of my technical capabilities and proficiency levels
+            across QA automation, testing frameworks, and DevOps tools.
+          </p>
         </motion.div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-          {skillsData.map((skill, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, rotateY: -25, y: 30 }}
-              whileInView={{ opacity: 1, rotateY: 0, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.12, type: "spring", stiffness: 80 }}
-              style={{ perspective: 1000 }}
-            >
-            <TiltCard
-              className="glass-effect rounded-2xl p-7 shadow-lg border border-primary/20 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 group h-full"
-              glowColor="rgba(99,102,241,0.35)"
-              intensity={8}
-            >
-              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary/30 to-accent/20 dark:from-primary/40 dark:to-accent/30 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                {skillIcons[skill.category as keyof typeof skillIcons]}
-              </div>
-              <h3 className="text-xl font-semibold mb-4 text-foreground">{skill.category}</h3>
-              <div className="space-y-3">
-                {skill.items.map((item: SkillItem, idx) => (
-                  <div key={idx} className="space-y-1">
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-medium text-foreground dark:text-slate-300">
-                        {item.name}
-                      </span>
-                      <span className="text-xs font-medium text-muted-foreground dark:text-slate-400">
-                        {item.proficiency}%
-                      </span>
-                    </div>
-                    <div className="relative h-2.5 w-full overflow-hidden rounded-full bg-gradient-to-r from-slate-200 to-slate-100 dark:from-slate-700 dark:to-slate-600">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${item.proficiency}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: idx * 0.1 }}
-                        className="h-full bg-gradient-to-r from-primary via-blue-500 to-accent rounded-full shadow-lg shadow-primary/50"
-                      />
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </TiltCard>
-            </motion.div>
-          ))}
+
+        {/* Skills grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {skillsData.map((skill, categoryIndex) => {
+            const meta = categoryMeta[skill.category] ?? {
+              description: "",
+              color: "from-primary to-primary/60",
+              Icon: Code2,
+            };
+            const { description, color, Icon } = meta;
+
+            return (
+              <motion.div
+                key={categoryIndex}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: categoryIndex * 0.08 }}
+              >
+                <Card className="group hover:shadow-lg transition-all duration-300 border-border overflow-hidden h-full">
+                  {/* Coloured top stripe */}
+                  <div className={`h-1 bg-gradient-to-r ${color}`} />
+
+                  <CardHeader>
+                    <CardTitle className="flex items-center gap-2 text-lg">
+                      <div className={`p-2 rounded-lg bg-gradient-to-br ${color} text-white shrink-0`}>
+                        <Icon className="w-4 h-4" />
+                      </div>
+                      {skill.category}
+                    </CardTitle>
+                    {description && (
+                      <CardDescription className="text-xs">{description}</CardDescription>
+                    )}
+                  </CardHeader>
+
+                  <CardContent className="space-y-4">
+                    {skill.items.map((item, skillIndex) => (
+                      <div key={skillIndex} className="space-y-1.5">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center gap-1.5 text-muted-foreground">
+                            {skillIconMap[item.name] ?? <Code2 className="w-4 h-4" />}
+                            <span className="text-sm font-medium text-foreground">{item.name}</span>
+                          </div>
+                          <span className="text-xs font-semibold text-muted-foreground">
+                            {item.proficiency}%
+                          </span>
+                        </div>
+                        {/* Animated progress bar */}
+                        <div className="relative h-2 w-full overflow-hidden rounded-full bg-muted">
+                          <motion.div
+                            initial={{ width: 0 }}
+                            whileInView={{ width: `${item.proficiency}%` }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.9, delay: skillIndex * 0.07, ease: "easeOut" }}
+                            className={`absolute inset-y-0 left-0 rounded-full bg-gradient-to-r ${color}`}
+                          />
+                        </div>
+                      </div>
+                    ))}
+                  </CardContent>
+                </Card>
+              </motion.div>
+            );
+          })}
         </div>
+
+        {/* Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6"
+        >
+          {stats.map((stat, i) => (
+            <Card key={i} className="border-border">
+              <CardContent className="pt-6">
+                <div className="flex items-center gap-4">
+                  <div className={`p-3 rounded-full ${stat.bg}`}>
+                    <Zap className={`w-6 h-6 ${stat.color}`} />
+                  </div>
+                  <div>
+                    <p className={`text-2xl font-bold ${stat.color}`}>{stat.value}</p>
+                    <p className="text-sm text-muted-foreground">{stat.label}</p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </motion.div>
       </div>
     </section>
   );

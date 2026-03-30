@@ -1,7 +1,7 @@
 {
   "name": "Yash Kabra",
   "title": "Senior Quality Assurance Engineer",
-  "location": "Dallas, TX, USA",
+  "location": "Indore, MP, India",
   "experience_years": 8,
   "summary": "Experienced QA professional with 8+ years in manual and automation testing across web, mobile, and APIs. Strong in test strategy, framework development, CI/CD integration, and driving measurable quality improvements.",
   "public_contacts": {
@@ -112,88 +112,66 @@
   ],
   "projects": [
     {
-      "name": "SunSirius Care",
-      "domain": "Healthcare & EVV",
-      "type": "Android, iOS, Web App",
-      "role": "QA (Functional, Manual, Usability)",
-      "frameworks_tools": ["Slack", "Jira", "Testflight", "Google Drive", "Lightshot"],
-      "summary": "All-in-one app for caregivers and agencies to manage shifts, billing, and EVV with real-time tracking."
+      "name": "Yadara.com",
+      "domain": "Ticketing System",
+      "role": "Senior QA Engineer",
+      "frameworks_tools": [
+        "Selenium",
+        "TestNG"
+      ],
+      "summary": "Ticket buying/selling platform; created automation for reliability and speed."
+    },
+    {
+      "name": "FirstCry.com",
+      "domain": "E-commerce & parenting",
+      "role": "QA (Functional, Manual, Usability, Exploratory, Automation)",
+      "frameworks_tools": [
+        "Redmine",
+        "SmartWork",
+        "Teams",
+        "FortiClient",
+        "POM"
+      ],
+      "summary": "Ensured seamless e-commerce operations and quality releases."
+    },
+    {
+      "name": "DrDenese",
+      "domain": "E-commerce (skincare)",
+      "role": "QA (Functional, Performance, Usability, Automation)",
+      "frameworks_tools": [
+        "C#",
+        "BDD",
+        "Cucumber",
+        "SpecFlow",
+        "TestNG"
+      ],
+      "summary": "Web store + subscription system; robust test coverage."
+    },
+    {
+      "name": "Smart Asset Manager",
+      "domain": "Cryptocurrency exchange",
+      "role": "QA (Functional, Performance, Usability, Exploratory, Automation)",
+      "frameworks_tools": [
+        "Mantis",
+        "Blockchain",
+        "GSheet"
+      ],
+      "summary": "Secure buy/sell digital assets; comprehensive testing."
     },
     {
       "name": "Computesphere",
       "domain": "Cloud Management",
       "role": "QA (Manual, Automation, API, CI/CD)",
-      "frameworks_tools": ["Python", "Selenium", "PyTest", "Behave", "Requests", "Jenkins", "GitHub Actions"],
+      "frameworks_tools": [
+        "Python",
+        "Selenium",
+        "PyTest",
+        "Behave",
+        "Requests",
+        "Jenkins",
+        "GitHub Actions"
+      ],
       "summary": "Automation framework; API tests; CI/CD integration; ~30% faster releases."
-    },
-    {
-      "name": "WordBop",
-      "domain": "Mobile Word Game",
-      "type": "Android, iOS",
-      "role": "QA (Functional, Manual, Usability)",
-      "frameworks_tools": ["Teams", "JIRA"],
-      "summary": "Daily word puzzle game with streak rewards, themed puzzles, and hidden stickers."
-    },
-    {
-      "name": "PotionPop",
-      "domain": "Mobile Match-3 Game",
-      "type": "Android, iOS",
-      "role": "QA (Functional, Manual, Usability)",
-      "frameworks_tools": ["Teams", "JIRA", "Lightshot", "ScreenRecorder"],
-      "summary": "Match-3 adventure across hundreds of handcrafted levels in a whimsical wizarding world."
-    },
-    {
-      "name": "Syncuppro",
-      "domain": "Compliance Management",
-      "type": "Web App",
-      "role": "QA (Manual, Functional, Usability)",
-      "frameworks_tools": ["Teams", "JIRA"],
-      "summary": "Platform connecting compliance managers with organisations for flexible project-based work."
-    },
-    {
-      "name": "Gently Radiant",
-      "domain": "E-commerce Skincare",
-      "type": "Web App",
-      "role": "QA (Functional, Manual, Automation, Usability)",
-      "frameworks_tools": ["Teams", "Jira", "Figma", "Outlook"],
-      "summary": "End-to-end testing for a skincare e-commerce platform across web and mobile."
-    },
-    {
-      "name": "Calen360",
-      "domain": "Calendar Sync",
-      "type": "Web App, PWA",
-      "role": "QA (Functional, Manual, Usability)",
-      "frameworks_tools": ["Teams", "JIRA", "Figma"],
-      "summary": "Sync calendars with minimal effort across platforms; tested as Web App and PWA."
-    },
-    {
-      "name": "Yadara.com",
-      "domain": "Ticketing System",
-      "role": "QA (Functional, Automation, API)",
-      "frameworks_tools": ["Python", "Selenium", "Requests", "JIRA"],
-      "summary": "Ticket buying/selling platform; automation improved reliability by 20%."
-    },
-    {
-      "name": "Smart Asset Manager",
-      "domain": "Cryptocurrency Exchange",
-      "type": "Android, iOS",
-      "role": "QA (Functional, Performance, Security)",
-      "frameworks_tools": ["Mantis", "Blockchain", "GSheet", "Skype", "Lightshot"],
-      "summary": "Secure crypto exchange app; comprehensive functional, performance, and security testing."
-    },
-    {
-      "name": "FirstCry.com",
-      "domain": "E-commerce & Parenting",
-      "role": "QA (Functional, Manual, Usability, Exploratory, Automation)",
-      "frameworks_tools": ["Redmine", "SmartWork", "Teams", "FortiClient", "POM"],
-      "summary": "Ensured seamless e-commerce operations; automation reduced testing effort by 40%."
-    },
-    {
-      "name": "DrDenese",
-      "domain": "E-commerce Skincare",
-      "role": "QA (Functional, Performance, Usability, BDD, Automation)",
-      "frameworks_tools": ["C#", "BDD", "Cucumber", "SpecFlow", "TestNG", "Redmine"],
-      "summary": "Premium skincare web store with subscription system; BDD automation with C# and SpecFlow."
     }
   ],
   "links": {

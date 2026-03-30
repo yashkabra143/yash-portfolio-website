@@ -4,3 +4,7 @@ node_modules
 .config/
 .vscode
 setting.json
+mcp.json
+ANIMATION_ENHANCEMENTS.md
+TEST_ANIMATIONS.md
+WARP.md

@@ -4,11 +4,11 @@ import EducationSection from "@/components/EducationSection";
 import ExperienceSection from "@/components/ExperienceSection";
 import SkillsSection from "@/components/SkillsSection";
 import ProjectsSection from "@/components/ProjectsSection";
-import TestimonialsSection from "@/components/TestimonialsSection";
 import CertificationsSection from "@/components/CertificationsSection";
 import ResourcesSection from "@/components/ResourcesSection";
 import ContactSection from "@/components/ContactSection";
 import ScrollReveal from "@/components/ScrollReveal";
+import { experienceData } from "@/lib/data";
 
 import AnalyticsTracker from "@/components/AnalyticsTracker";
 import SkipToContent from "@/components/SkipToContent";
@@ -52,10 +52,35 @@ export default function Home() {
       <main id="main" aria-label="Main content">
         <HeroSection />
         <ScrollReveal delay={0.1}>
-          <EducationSection />
+          <EducationSection
+            degree="Bachelor's in Information Technology"
+            institution="Rajiv Gandhi Proudyogiki Vishwavidyalaya"
+            location="Bhopal, MP, India"
+            period="2013 - 2017"
+          />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
-          <ExperienceSection />
+          <ExperienceSection
+            experiences={[
+              ...experienceData
+                .filter((e) => e.type === "full")
+                .map((e) => ({
+                  position: e.title!,
+                  company: e.company!,
+                  location: e.location!,
+                  period: e.period!,
+                  responsibilities: e.responsibilities,
+                })),
+              ...(experienceData
+                .find((e) => e.type === "earlier")
+                ?.positions?.map((p) => ({
+                  position: p.title,
+                  company: p.company ?? "",
+                  location: p.location ?? "",
+                  period: p.period ?? "",
+                })) ?? []),
+            ]}
+          />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <CertificationsSection />
@@ -68,9 +93,6 @@ export default function Home() {
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <ResourcesSection />
-        </ScrollReveal>
-        <ScrollReveal delay={0.1}>
-          <TestimonialsSection />
         </ScrollReveal>
         <ScrollReveal delay={0.1}>
           <ContactSection />
