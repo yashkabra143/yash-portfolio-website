@@ -26,6 +26,8 @@ function App() {
       touchMultiplier: 2,
     });
 
+    (window as Window & { __lenis?: typeof lenis }).__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -35,6 +37,7 @@ function App() {
 
     return () => {
       lenis.destroy();
+      delete (window as Window & { __lenis?: typeof lenis }).__lenis;
     };
   }, []);
 

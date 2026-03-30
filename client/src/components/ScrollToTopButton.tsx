@@ -11,7 +11,14 @@ export function ScrollToTopButton() {
     return () => window.removeEventListener("scroll", toggle);
   }, []);
 
-  const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+  const scrollToTop = () => {
+    const lenis = (window as Window & { __lenis?: { scrollTo: (target: number) => void } }).__lenis;
+    if (lenis) {
+      lenis.scrollTo(0);
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
 
   if (!isVisible) return null;
 
