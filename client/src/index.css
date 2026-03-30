@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -69,7 +69,8 @@
   }
 
   body {
-    @apply font-inter antialiased bg-background text-foreground;
+    @apply font-sans antialiased bg-background text-foreground;
+    font-feature-settings: "ss01", "ss02", "cv01";
   }
 
   h1,
@@ -78,9 +79,8 @@
   h4,
   h5,
   h6 {
-    @apply font-poppins font-bold;
-    letter-spacing: -0.02em;
-    font-weight: 700;
+    @apply font-display font-bold;
+    letter-spacing: -0.03em;
   }
 
   h1 {
