@@ -14,6 +14,7 @@ import AnalyticsTracker from "@/components/AnalyticsTracker";
 import SkipToContent from "@/components/SkipToContent";
 import Footer from "@/components/Footer";
 import { ChatBot } from "@/components/ChatBot";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 import { useEffect } from "react";
 import { useActiveSection } from "@/lib/hooks";
 
@@ -99,6 +100,7 @@ export default function Home() {
         </ScrollReveal>
       </main>
       <Footer />
+      <ScrollToTopButton />
       <ChatBot />
     </>
   );
