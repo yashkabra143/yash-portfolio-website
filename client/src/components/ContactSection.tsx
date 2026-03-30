@@ -37,7 +37,7 @@ const CONTACT_INFO = [
   {
     icon: <MapPin className="w-5 h-5" />,
     label: "Location",
-    value: "Dallas, TX, USA",
+    value: "Indore, Madhya Pradesh, India",
     href: undefined,
   },
 ];
