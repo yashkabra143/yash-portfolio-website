@@ -14,19 +14,12 @@ app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_as
 
 // Set proper response headers to prevent body stream issues
 app.use((req, res, next) => {
-  // Set cache headers
-  res.set('Cache-Control', 'no-cache, no-store, must-revalidate');
-  res.set('Pragma', 'no-cache');
-  res.set('Expires', '0');
-
-  // Set proper content type (API responses only — static files are handled above)
-  res.set('Content-Type', 'application/json');
-
-  // CORS headers for chat widget
-  res.set('Access-Control-Allow-Origin', '*');
-  res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-  res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
+  // CORS headers for API routes only
+  if (req.path.startsWith('/api')) {
+    res.set('Access-Control-Allow-Origin', '*');
+    res.set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  }
   next();
 });
 
