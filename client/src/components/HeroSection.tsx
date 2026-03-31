@@ -18,22 +18,25 @@ const SOCIAL_LINKS = [
     icon: Briefcase,
     href: "https://www.upwork.com/freelancers/~01125d841102f61285",
     label: "Upwork",
-    upwork: true,
+    color: "#14a800",
   },
   {
     icon: Linkedin,
     href: "https://www.linkedin.com/in/yashkabra143/",
     label: "LinkedIn",
+    color: "#0077b5",
   },
   {
     icon: Github,
     href: "https://github.com/yashkabra143",
     label: "GitHub",
+    color: "#24292e",
   },
   {
     icon: FileText,
     href: "/attached_assets/Yash_Kabra_QA_Engineer.pdf",
     label: "Resume",
+    color: "#f97316",
     download: true,
   },
 ];
@@ -166,12 +169,8 @@ export default function HeroSection() {
                     download={link.download || undefined}
                     whileHover={{ scale: 1.05, y: -2 }}
                     whileTap={{ scale: 0.96 }}
-                    className={
-                      link.upwork
-                        ? "group flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:shadow-lg"
-                        : "group flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 text-sm font-medium text-muted-foreground shadow-sm transition-all duration-300 hover:border-foreground/30 hover:text-foreground hover:shadow-md"
-                    }
-                    style={link.upwork ? { backgroundColor: "#14a800" } : undefined}
+                    className="group flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-white shadow-md transition-all duration-300 hover:opacity-90 hover:shadow-lg"
+                    style={{ backgroundColor: link.color }}
                   >
                     <link.icon className="h-4 w-4 transition-colors" />
                     {link.label}
