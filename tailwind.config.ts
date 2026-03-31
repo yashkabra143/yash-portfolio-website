@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        sans: ['DM Sans', 'sans-serif'],
-        display: ['Syne', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
+        display: ['Montserrat', 'sans-serif'],
       },
       borderRadius: {
         lg: "var(--radius)",
