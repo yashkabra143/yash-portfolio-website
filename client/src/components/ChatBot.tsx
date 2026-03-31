@@ -178,7 +178,7 @@ export function ChatBot() {
           </div>
 
           {/* Messages */}
-          <ScrollArea className="flex-1" ref={scrollAreaRef}>
+          <ScrollArea className="flex-1" ref={scrollAreaRef} data-lenis-prevent>
             <div className="flex flex-col gap-4 px-4 py-4">
               {messages.map((msg) => (
                 <div
