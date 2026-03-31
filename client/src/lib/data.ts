@@ -210,18 +210,18 @@ export const projectsData = [
     testingType: ["Functional", "Automation", "API"],
     icon: "ticket",
     url: "https://yadara.com/",
-    image: "https://api.microlink.io/?url=https%3A%2F%2Fyadara.com&screenshot=true&meta=false&embed=screenshot.url"
+    image: "/attached_assets/yadara.png"
   },
-  {
-    name: "Smart Asset Manager",
-    domain: "Cryptocurrency Exchange",
-    description: "Cryptocurrency exchange platform (Android & iOS) enabling users to securely buy and sell digital assets. Comprehensive testing covered functional, performance, and security aspects of blockchain transactions.",
-    technologies: ["Mantis", "Blockchain", "Gsheet", "Skype", "Lightshot"],
-    category: "Finance Application",
-    industry: "FinTech & Cryptocurrency",
-    testingType: ["Functional", "Performance", "Security"],
-    icon: "crypto"
-  },
+  // {
+  //   name: "Smart Asset Manager",
+  //   domain: "Cryptocurrency Exchange",
+  //   description: "Cryptocurrency exchange platform (Android & iOS) enabling users to securely buy and sell digital assets. Comprehensive testing covered functional, performance, and security aspects of blockchain transactions.",
+  //   technologies: ["Mantis", "Blockchain", "Gsheet", "Skype", "Lightshot"],
+  //   category: "Finance Application",
+  //   industry: "FinTech & Cryptocurrency",
+  //   testingType: ["Functional", "Performance", "Security"],
+  //   icon: "crypto"
+  // },
   {
     name: "FirstCry.com",
     domain: "E-commerce & Parenting",
