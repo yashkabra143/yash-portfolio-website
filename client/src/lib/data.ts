@@ -335,4 +335,14 @@ export const certificationsData = [
     skills: ["Selenium", "Python", "Test Automation", "WebDriver", "PyTest"],
     status: "active" as const,
   },
+  {
+    id: 3,
+    title: "Claude Code in Action",
+    issuer: "Anthropic (Skilljar)",
+    date: "March 2026",
+    credentialId: "m6ewk3kv7t8y",
+    credentialUrl: "https://verify.skilljar.com/c/m6ewk3kv7t8y",
+    skills: ["Claude Code", "AI-Assisted Development", "Prompt Engineering", "Anthropic"],
+    status: "active" as const,
+  },
 ];
