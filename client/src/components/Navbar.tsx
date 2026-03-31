@@ -46,8 +46,12 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         {/* Brand */}
-        <a
-          href="#hero"
+        <button
+          onClick={() => {
+            const lenis = (window as Window & { __lenis?: { scrollTo: (target: number) => void } }).__lenis;
+            if (lenis) lenis.scrollTo(0);
+            else window.scrollTo({ top: 0, behavior: "smooth" });
+          }}
           className="flex items-center gap-2 rounded-full bg-gradient-to-r from-primary/10 via-primary/5 to-transparent px-3 py-1 text-sm font-medium text-primary transition hover:from-primary/20 hover:via-primary/10"
         >
           <span className="flex h-8 w-8 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-sm">
@@ -59,7 +63,7 @@ export default function Navbar() {
               Senior Quality Assurance Engineer
             </span>
           </span>
-        </a>
+        </button>
 
         {/* Desktop nav */}
         <div className="hidden items-center gap-6 md:flex">
