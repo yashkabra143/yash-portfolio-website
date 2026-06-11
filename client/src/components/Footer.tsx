@@ -124,7 +124,7 @@ export default function Footer() {
               <p className="text-muted-foreground text-xs">
                 © {new Date().getFullYear()} Yash Kabra. All rights reserved.
               </p>
-              <p className="text-muted-foreground text-xs">Last updated: May 2025</p>
+              <p className="text-muted-foreground text-xs">Last updated: June 2026</p>
             </div>
           </div>
         </AnimatedContainer>
