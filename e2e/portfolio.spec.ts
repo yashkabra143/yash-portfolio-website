@@ -124,6 +124,59 @@ test.describe("ChatBot", () => {
     await page.getByRole("button", { name: "Close chat" }).click();
     await expect(page.getByText(/Yash's AI assistant/i)).toBeHidden();
   });
+
+  test("renders markdown in bot replies as formatted HTML", async ({ page }) => {
+    // Real response shape captured from the production n8n webhook
+    await page.route("**/webhook/**", (route) =>
+      route.fulfill({
+        status: 200,
+        json: {
+          output:
+            "Connect with him on [LinkedIn](https://www.linkedin.com/in/yashkabra143/).\n\nYash's top skills are:\n* **Python**\n* **Selenium**\n* **API Testing**",
+        },
+      })
+    );
+
+    await page.goto("/");
+    await page.getByRole("button", { name: "Open chat" }).click();
+    await page.getByPlaceholder("Ask me anything...").fill("Share LinkedIn and top skills");
+    await page.keyboard.press("Enter");
+
+    // Scope to the chat window so hero/footer LinkedIn links don't match
+    const chat = page.locator("div.fixed").filter({ hasText: "Powered by n8n" });
+
+    const link = chat.getByRole("link", { name: "LinkedIn" });
+    await expect(link).toBeVisible();
+    await expect(link).toHaveAttribute("href", "https://www.linkedin.com/in/yashkabra143/");
+    await expect(link).toHaveAttribute("target", "_blank");
+    await expect(link).toHaveAttribute("rel", /noopener/);
+
+    await expect(chat.locator("li strong", { hasText: "Python" })).toBeVisible();
+    await expect(chat.locator("ul li")).toHaveCount(3);
+
+    // No raw markdown syntax leaks into the visible chat
+    await expect(chat).not.toContainText("**");
+    await expect(chat).not.toContainText("](");
+  });
+
+  test("user messages are shown as plain text, never parsed", async ({ page }) => {
+    await page.route("**/webhook/**", (route) =>
+      route.fulfill({ status: 200, json: { output: "Got it!" } })
+    );
+
+    await page.goto("/");
+    await page.getByRole("button", { name: "Open chat" }).click();
+    await page
+      .getByPlaceholder("Ask me anything...")
+      .fill("**not bold** <img src=x onerror=alert(1)> [no link](https://evil.example)");
+    await page.keyboard.press("Enter");
+
+    // Literal markdown/HTML stays literal in the user bubble
+    await expect(
+      page.getByText("**not bold** <img src=x onerror=alert(1)> [no link](https://evil.example)")
+    ).toBeVisible();
+    await expect(page.getByRole("link", { name: "no link" })).toHaveCount(0);
+  });
 });
 
 test.describe("Accessibility basics", () => {

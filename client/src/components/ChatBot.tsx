@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Send, Bot, User, Sparkles, X, MessageCircle, Trash2, RefreshCw } from 'lucide-react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import remarkBreaks from 'remark-breaks';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { ScrollArea } from '@/components/ui/scroll-area';
@@ -12,6 +13,20 @@ interface Message {
   text: string;
   sender: 'user' | 'bot';
   timestamp: Date;
+}
+
+// n8n can reply with { output } / { message } / { text }, a bare string,
+// or any of those wrapped in an array — accept them all
+function extractBotReply(data: unknown): string | undefined {
+  if (typeof data === 'string') return data;
+  if (Array.isArray(data)) return extractBotReply(data[0]);
+  if (data && typeof data === 'object') {
+    const obj = data as Record<string, unknown>;
+    for (const key of ['output', 'message', 'text', 'reply']) {
+      if (typeof obj[key] === 'string' && obj[key]) return obj[key] as string;
+    }
+  }
+  return undefined;
 }
 
 export function ChatBot() {
@@ -73,11 +88,10 @@ export function ChatBot() {
 
       if (response.ok) {
         const data = await response.json();
-        if (data.output) botReply = data.output;
-        else if (data.message) botReply = data.message;
-        else if (typeof data === 'string') botReply = data;
-        else if (data.text) botReply = data.text;
-        if (data.sessionId) localStorage.setItem('chatSessionId', data.sessionId);
+        botReply = extractBotReply(data) ?? botReply;
+        if (data && typeof data === 'object' && !Array.isArray(data) && typeof data.sessionId === 'string') {
+          localStorage.setItem('chatSessionId', data.sessionId);
+        }
       } else {
         botReply = `Error ${response.status}. Please try again later.`;
       }
@@ -205,20 +219,25 @@ export function ChatBot() {
                           : 'bg-muted text-foreground rounded-tl-sm'
                       }`}
                     >
-                      <div className={msg.sender === 'user' ? '[&_a]:text-white/80 [&_code]:bg-white/20' : '[&_a]:text-foreground [&_a]:underline [&_code]:bg-background'}>
-                        <ReactMarkdown
-                          remarkPlugins={[remarkGfm]}
-                          components={{
-                            ul: ({ ...props }) => <ul className="list-disc pl-4 mb-1.5 space-y-0.5" {...props} />,
-                            ol: ({ ...props }) => <ol className="list-decimal pl-4 mb-1.5 space-y-0.5" {...props} />,
-                            p: ({ ...props }) => <p className="mb-1.5 last:mb-0" {...props} />,
-                            a: ({ ...props }) => <a className="underline hover:no-underline break-all" target="_blank" rel="noopener noreferrer" {...props} />,
-                            code: ({ ...props }) => <code className="px-1 py-0.5 rounded text-xs font-mono" {...props} />,
-                          }}
-                        >
-                          {msg.text}
-                        </ReactMarkdown>
-                      </div>
+                      {msg.sender === 'user' ? (
+                        // User input stays plain text — never parsed as markdown/HTML
+                        <p className="whitespace-pre-wrap break-words">{msg.text}</p>
+                      ) : (
+                        <div className="[&_a]:text-primary [&_a]:underline [&_code]:bg-background [&_strong]:font-semibold">
+                          <ReactMarkdown
+                            remarkPlugins={[remarkGfm, remarkBreaks]}
+                            components={{
+                              ul: ({ ...props }) => <ul className="list-disc pl-4 mb-1.5 space-y-0.5" {...props} />,
+                              ol: ({ ...props }) => <ol className="list-decimal pl-4 mb-1.5 space-y-0.5" {...props} />,
+                              p: ({ ...props }) => <p className="mb-1.5 last:mb-0" {...props} />,
+                              a: ({ ...props }) => <a className="underline hover:no-underline break-all" target="_blank" rel="noopener noreferrer" {...props} />,
+                              code: ({ ...props }) => <code className="px-1 py-0.5 rounded text-xs font-mono" {...props} />,
+                            }}
+                          >
+                            {msg.text}
+                          </ReactMarkdown>
+                        </div>
+                      )}
                     </div>
                     <span className="text-[10px] text-muted-foreground px-1">
                       {msg.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
