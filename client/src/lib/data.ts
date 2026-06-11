@@ -210,7 +210,7 @@ export const projectsData = [
     testingType: ["Functional", "Automation", "API"],
     icon: "ticket",
     url: "https://yadara.com/",
-    image: "/attached_assets/yadara.png"
+    image: "/attached_assets/yadara.webp"
   },
   // {
   //   name: "Smart Asset Manager",
@@ -232,7 +232,7 @@ export const projectsData = [
     testingType: ["Functional", "Manual", "Usability", "Automation"],
     icon: "baby",
     url: "https://www.firstcry.com/",
-    image: "/attached_assets/firstcry-screenshot.png"
+    image: "/attached_assets/firstcry-screenshot.webp"
   },
   {
     name: "DrDenese",

@@ -17,6 +17,8 @@ const formSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
   subject: z.string().min(5, "Subject must be at least 5 characters"),
   message: z.string().min(10, "Message must be at least 10 characters"),
+  // Honeypot — hidden from humans, bots auto-fill it and get silently dropped
+  website: z.string().optional(),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -47,7 +49,7 @@ export default function ContactSection() {
 
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", subject: "", message: "" },
+    defaultValues: { name: "", email: "", subject: "", message: "", website: "" },
   });
 
   const contactMutation = useMutation({
@@ -169,6 +171,14 @@ export default function ContactSection() {
             <Card className="p-8 border-border shadow-lg">
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <input
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute -left-[9999px] h-0 w-0 opacity-0"
+                    {...form.register("website")}
+                  />
                   <div className="grid sm:grid-cols-2 gap-6">
                     <FormField
                       control={form.control}

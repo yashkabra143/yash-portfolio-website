@@ -6,21 +6,47 @@ import { z } from "zod";
 import { sendContactFormEmail, initializeMailService } from "./services/emailService";
 
 
+// Simple in-memory rate limiter: max 5 contact submissions per IP per 10 minutes
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX = 5;
+const submissionLog = new Map<string, number[]>();
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const recent = (submissionLog.get(ip) ?? []).filter(
+    (t) => now - t < RATE_LIMIT_WINDOW_MS
+  );
+  if (recent.length >= RATE_LIMIT_MAX) {
+    submissionLog.set(ip, recent);
+    return true;
+  }
+  recent.push(now);
+  submissionLog.set(ip, recent);
+  return false;
+}
+
 export async function registerRoutes(app: Express): Promise<Server> {
-  // Expose API key for Google AI
-  app.get('/api/config', (req, res) => {
-    return res.json({
-      googleAiApiKey: process.env.GOOGLE_AI_API_KEY || ''
-    });
-  });
   // Initialize EmailService on server startup
   initializeMailService();
 
   // Contact form submission route
- // Updated section for your server/routes.ts
-
 app.post('/api/contact', async (req, res) => {
   try {
+    // Honeypot: bots fill the hidden "website" field; pretend success and drop it
+    if (typeof req.body?.website === 'string' && req.body.website.trim() !== '') {
+      res.status(201).json({ success: true, message: "Message received successfully" });
+      return;
+    }
+
+    const ip = req.ip || req.socket.remoteAddress || 'unknown';
+    if (isRateLimited(ip)) {
+      res.status(429).json({
+        success: false,
+        message: "Too many messages. Please try again later."
+      });
+      return;
+    }
+
     const validatedData = messageInsertSchema.parse(req.body);
     const message = await storage.saveContactMessage(validatedData);
     

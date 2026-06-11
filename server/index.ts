@@ -10,7 +10,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // Serve assets from the attached_assets folder — must be before the global
 // Content-Type middleware so files are served with correct MIME types
-app.use('/attached_assets', express.static(path.join(process.cwd(), 'attached_assets')));
+app.use('/attached_assets', express.static(path.join(process.cwd(), 'client', 'public', 'attached_assets')));
 
 // Set proper response headers to prevent body stream issues
 app.use((req, res, next) => {

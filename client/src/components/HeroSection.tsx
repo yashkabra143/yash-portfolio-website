@@ -110,7 +110,7 @@ export default function HeroSection() {
                 />
                 <Avatar className="relative h-36 w-36 border-4 border-background shadow-2xl ring-1 ring-border md:h-44 md:w-44">
                   <AvatarImage
-                    src="/attached_assets/yash-photo-removebg-preview.png"
+                    src="/attached_assets/yash-photo-removebg-preview.webp"
                     alt="Yash Kabra - Senior QA Engineer"
                     className="object-cover object-top"
                   />
