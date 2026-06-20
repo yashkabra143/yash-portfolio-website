@@ -22,7 +22,7 @@ test.describe("Homepage", () => {
     await page.goto("/");
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       "href",
-      "https://yashkabra.vercel.app/"
+      "https://www.iamyashkabra.com/"
     );
     await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
       "content",
