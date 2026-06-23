@@ -71,11 +71,7 @@ export function ChatBot() {
     setIsLoading(true);
 
     try {
-      const webhookUrl =
-        import.meta.env.VITE_N8N_WEBHOOK_URL ||
-        'https://triggerandflow.in/webhook/16b35e59-8e87-4bdd-aa59-e6609e16599f/chat';
-
-      const response = await fetch(webhookUrl, {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

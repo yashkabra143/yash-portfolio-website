@@ -6,6 +6,14 @@ export default defineConfig({
   plugins: [
     react(),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:5000',
+        changeOrigin: true,
+      },
+    },
+  },
   resolve: {
     alias: {
       "@db": path.resolve(import.meta.dirname, "db"),

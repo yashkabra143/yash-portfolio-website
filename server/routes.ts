@@ -131,6 +131,45 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+  // Chat proxy route — avoids CORS by keeping n8n webhook server-side
+  const chatRateLog = new Map<string, number[]>();
+  app.post('/api/chat', async (req, res) => {
+    const ip = req.ip || req.socket.remoteAddress || 'unknown';
+    const now = Date.now();
+    const recent = (chatRateLog.get(ip) ?? []).filter((t) => now - t < 60_000);
+    if (recent.length >= 20) {
+      chatRateLog.set(ip, recent);
+      res.status(429).json({ error: 'Too many requests. Please slow down.' });
+      return;
+    }
+    recent.push(now);
+    chatRateLog.set(ip, recent);
+
+    const { chatInput, sessionId } = req.body ?? {};
+    if (!chatInput || typeof chatInput !== 'string' || chatInput.trim() === '') {
+      res.status(400).json({ error: 'chatInput is required' });
+      return;
+    }
+
+    const webhookUrl =
+      process.env.N8N_CHAT_WEBHOOK_URL ||
+      process.env.VITE_N8N_WEBHOOK_URL ||
+      'https://triggerandflow.in/webhook/16b35e59-8e87-4bdd-aa59-e6609e16599f/chat';
+
+    try {
+      const n8nRes = await fetch(webhookUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ chatInput: chatInput.trim(), sessionId: sessionId || '' }),
+      });
+      const data = await n8nRes.json();
+      res.status(n8nRes.status).json(data);
+    } catch (err) {
+      console.error('n8n chat proxy error:', err);
+      res.status(502).json({ error: 'Failed to reach AI backend' });
+    }
+  });
+
   const httpServer = createServer(app);
   return httpServer;
 }
