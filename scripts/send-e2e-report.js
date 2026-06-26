@@ -1,6 +1,4 @@
-'use strict';
-
-const fs = require('fs');
+import fs from 'fs';
 
 (async () => {
   const date = new Date().toLocaleDateString('en-IN', {

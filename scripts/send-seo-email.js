@@ -1,5 +1,3 @@
-'use strict';
-
 (async () => {
   const date = new Date().toLocaleDateString('en-IN', {
     timeZone: 'Asia/Kolkata',
