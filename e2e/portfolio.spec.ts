@@ -126,8 +126,7 @@ test.describe("ChatBot", () => {
   });
 
   test("renders markdown in bot replies as formatted HTML", async ({ page }) => {
-    // Real response shape captured from the production n8n webhook
-    await page.route("**/webhook/**", (route) =>
+    await page.route("**/api/chat**", (route) =>
       route.fulfill({
         status: 200,
         json: {
@@ -160,7 +159,7 @@ test.describe("ChatBot", () => {
   });
 
   test("user messages are shown as plain text, never parsed", async ({ page }) => {
-    await page.route("**/webhook/**", (route) =>
+    await page.route("**/api/chat**", (route) =>
       route.fulfill({ status: 200, json: { output: "Got it!" } })
     );
 
