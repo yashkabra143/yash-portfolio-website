@@ -345,4 +345,14 @@ export const certificationsData = [
     skills: ["Claude Code", "AI-Assisted Development", "Prompt Engineering", "Anthropic"],
     status: "active" as const,
   },
+  {
+    id: 4,
+    title: "n8n Quickstart",
+    issuer: "n8n Education Team",
+    date: "July 2026",
+    credentialId: "7237b6c60b17498488870e62d4c9a19c",
+    credentialUrl: "https://learn.n8n.io/certificates/7237b6c60b17498488870e62d4c9a19c",
+    skills: ["n8n", "Workflow Automation", "No-Code Automation", "Integrations"],
+    status: "active" as const,
+  },
 ];
