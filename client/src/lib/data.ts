@@ -359,7 +359,7 @@ export const certificationsData = [
     id: 5,
     title: "AWS Certified Cloud Practitioner",
     issuer: "Amazon Web Services (AWS)",
-    date: "October 2026",
+    date: "July 2026",
     credentialId: "6630aa27-6254-445a-80fe-872f2c834417",
     credentialUrl: "https://www.credly.com/badges/6630aa27-6254-445a-80fe-872f2c834417",
     skills: ["AWS", "Cloud Computing", "Cloud Security", "AWS Core Services"],
