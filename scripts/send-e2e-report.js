@@ -49,13 +49,15 @@ import fs from 'fs';
   const failed  = stats.unexpected || 0;
   const skipped = stats.skipped    || 0;
   const outcome = process.env.TEST_OUTCOME || '';
-  const isPass  = failed === 0 && outcome !== 'failure';
+  const isPass  = failed === 0 && total > 0 && outcome === 'success';
 
   const bannerBg   = isPass ? '#16a34a' : '#dc2626';
   const bannerIcon = isPass ? '✅' : '❌';
   const bannerText = isPass
     ? 'All ' + total + ' tests passed'
-    : failed + ' test' + (failed !== 1 ? 's' : '') + ' failed';
+    : failed > 0
+      ? failed + ' test' + (failed !== 1 ? 's' : '') + ' failed'
+      : 'Tests did not run (step outcome: ' + (outcome || 'unknown') + ')';
 
   const statCard = (n, label, bg, border, color) =>
     '<td style="width:25%;padding:0 6px">'

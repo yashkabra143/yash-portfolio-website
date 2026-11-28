@@ -7,7 +7,7 @@ on:
 
 jobs:
   e2e-daily:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04  # pinned: Playwright 1.60 has no ubuntu-26.04 support
     timeout-minutes: 20
 
     steps:
